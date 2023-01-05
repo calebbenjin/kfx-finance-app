@@ -3,6 +3,7 @@ import Link from 'next/link';
 import useDelayedRender from 'use-delayed-render';
 import { useState, useEffect } from 'react';
 import styles from 'styles/mobile-menu.module.css';
+import { CiLogin } from 'react-icons/ci'
 
 export default function MobileMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,7 +46,7 @@ export default function MobileMenu() {
         <ul
           className={cn(
             styles.menu,
-            'flex flex-col absolute bg-gray-100 dark:bg-gray-900',
+            'flex flex-col absolute bg-light-blue',
             isMenuRendered && styles.menuRendered
           )}
         >
@@ -53,31 +54,15 @@ export default function MobileMenu() {
             className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
             style={{ transitionDelay: '150ms' }}
           >
-            <Link href="/" className="flex w-auto pb-4">
+            <Link href="/" className="flex w-auto pl-4 pb-4">
               Home
             </Link>
           </li>
-          {/* <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
-            style={{ transitionDelay: '175ms' }}
-          >
-            <Link href="/guestbook" className="flex w-auto pb-4">
-              Guestbook
-            </Link>
-          </li> */}
-          {/* <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
-            style={{ transitionDelay: '200ms' }}
-          >
-            <Link href="/dashboard" className="flex w-auto pb-4">
-              Dashboard
-            </Link>
-          </li> */}
           <li
             className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
             style={{ transitionDelay: '250ms' }}
           >
-            <Link href="/blog" className="flex w-auto pb-4">
+            <Link href="#blog" className="flex w-auto pl-4 pb-4">
               Blog
             </Link>
           </li>
@@ -85,34 +70,26 @@ export default function MobileMenu() {
             className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
             style={{ transitionDelay: '275ms' }}
           >
-            <Link href="/snippets" className="flex w-auto pb-4">
-              Code Snippets
+            <Link href="#about" className="flex w-auto pl-4 pb-4">
+              About
             </Link>
           </li>
-          {/* <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
-            style={{ transitionDelay: '300ms' }}
-          >
-            <Link href="/newsletter" className="flex w-auto pb-4">
-              Newsletter
-            </Link>
-          </li> */}
           <li
             className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
             style={{ transitionDelay: '325ms' }}
           >
-            <Link href="/tweets" className="flex w-auto pb-4">
-              Tweets
+            <Link href="/tweets" className="flex w-auto pl-4 pb-4">
+              Login
             </Link>
           </li>
-          {/* <li
+          <li
             className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
-            style={{ transitionDelay: '350ms' }}
+            style={{ transitionDelay: '325ms' }}
           >
-            <Link href="/uses" className="flex w-auto pb-4">
-              Uses
+            <Link href="/tweets" className="flex justify-between items-center w-auto pl-4 pb-4 core-btn shadow-2xl ml-4 bg-blue py-3 px-6 md:inline-block">
+              Register <CiLogin className="text-2xl" />
             </Link>
-          </li> */}
+          </li>
         </ul>
       )}
     </>
