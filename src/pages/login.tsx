@@ -11,8 +11,8 @@ const LoginPage = () => {
       <Section>
         <FormSection className="form-container">
           <div className="container mx-auto text-center pt-10">
-            {/* <h2 className='font-bold text-3xl'>Logo</h2> */}
             <h2 className='font-bold text-3xl my-4'>Login</h2>
+            <p className='font-semibold text-md text-gray-400 my-2'>Enter Login credentials</p>
             <form>
               <div className="input-control">
                 <input type="text" placeholder="Email" />

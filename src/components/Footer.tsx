@@ -2,6 +2,8 @@ import Link from 'next/link'
 import React from 'react'
 import styled from 'styled-components'
 import { SiFsecure } from 'react-icons/si'
+import { LinkButton } from './Button'
+import { IoLogoGooglePlaystore } from 'react-icons/io5'
 
 const Footer = () => {
   return (
@@ -10,6 +12,7 @@ const Footer = () => {
         <div className="about-content">
           <BrandLogo><SiFsecure className="logo" /> <span>Pay</span>Foreign</BrandLogo>
           <p className="text-gray-300 mt-6">Yet bed any for travelling assistance indulgence unpleasing. Not thoughts all exercise blessing. Indulgence way everything joy alteration boisterous the attachment.</p>
+          <LinkButton href="/" className="core-rounded-btn shadow-2xl bg-blue text-gray-100 mt-4 py-3 px-6 md:py-3 md:px-7 flex items-center"> <IoLogoGooglePlaystore className="playstore-icon" /> Download App</LinkButton>
         </div>
         <div className="nav-link flex align-center justify-center">
           <div className="container">
@@ -44,6 +47,11 @@ const FooterSection = styled.footer`
 
   .footer {
     border-top: solid 1px #f2f3f4;
+  }
+
+  .playstore-icon {
+    font-size: 1.5rem;
+    color: #fff;
   }
 
   .nav-link a {

@@ -3,12 +3,12 @@ import FeatureImg from '../assets/Illustration.png'
 import Image from 'next/image'
 import styled from 'styled-components'
 import Link from 'next/link'
-import ScrollAnimation from './ScrollAnimation'
+import { AnimationOnScroll } from 'react-animation-on-scroll';
 
 
 const FeatureSection = () => {
   return (
-    <ScrollAnimation>
+    <AnimationOnScroll animateIn="animate__backInUp" animateOnce={false}>
       <SectionWrapper>
         <div className="container mx-auto py-20 grid grid-cols-1 md:grid-cols-1 md:gap-6 lg:grid-cols-2 lg:gap-2">
           <div className="img-wrapper">
@@ -24,7 +24,7 @@ const FeatureSection = () => {
           </div>
         </div>
       </SectionWrapper>
-    </ScrollAnimation>
+    </AnimationOnScroll>
   )
 }
 

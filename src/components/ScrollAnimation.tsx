@@ -3,7 +3,7 @@ import { useInView } from "react-intersection-observer";
 import React, { useEffect } from "react";
 
 const boxVariant = {
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.1 } },
   hidden: { opacity: 0, scale: 0 }
 };
 
@@ -27,11 +27,11 @@ const ScrollAnimation = ({children}: BoxProps ) => {
 
   return (
     <motion.div
-      className="box"
       ref={ref}
       variants={boxVariant}
       initial="hidden"
       animate={control}
+      viewport={{ once: true }}
     >
       {children}
     </motion.div>
