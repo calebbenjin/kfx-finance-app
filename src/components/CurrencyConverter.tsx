@@ -25,7 +25,7 @@ const CurrencyConverter = () => {
       <ConverterCard className="converter-card pb-10 transition-all">
         <div className="card-header text-center p-10">
           <p className="pb-2 text-gray-500">Exchange Rate</p>
-          <h1 className="md:text-3xl font-semibold">$22.97</h1>
+          <h1 className="md:text-3xl text-3xl font-semibold">$22.97</h1>
         </div>
         <div className="card-body text-left">
           <form>
@@ -36,17 +36,23 @@ const CurrencyConverter = () => {
             <div className="exchange-wrapper flex items-center justify-between my-4">
               <div className="from-wrapper">
                 <label htmlFor="from">From</label>
-                <select name="" id="">
-                  <option value="ng">Nigeria</option>
-                  <option value="ng">South Africa</option>
+                <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                  <option selected>Choose a country</option>
+                  <option value="US">United States</option>
+                  <option value="CA">Canada</option>
+                  <option value="FR">France</option>
+                  <option value="DE">Germany</option>
                 </select>
               </div>
               <FaExchangeAlt className="exchange-icon" />
               <div className="to-wrapper">
                 <label htmlFor="to">To</label>
-                <select name="" id="">
-                  <option value="ng">Nigeria</option>
-                  <option value="ng">South Africa</option>
+                <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                  <option selected>Choose a country</option>
+                  <option value="US">United States</option>
+                  <option value="CA">Canada</option>
+                  <option value="FR">France</option>
+                  <option value="DE">Germany</option>
                 </select>
               </div>
             </div>
