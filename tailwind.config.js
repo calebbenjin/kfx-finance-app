@@ -11,7 +11,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'blue-opaque': 'rgb(13 42 148 / 18%)',
+        'blue': '#3734A9',
+        'light-blue': '#F3F7FA',
+        'brand': '#FF7F5C',
         gray: {
           0: '#fff',
           100: '#fafafa',
@@ -94,7 +96,16 @@ module.exports = {
           }
         }
       })
-    }
+    },
+    container: {
+      padding: {
+        DEFAULT: '1rem',
+        sm: '2rem',
+        lg: '4rem',
+        xl: '5rem',
+        '2xl': '6rem',
+      },
+    },
   },
   plugins: [require('@tailwindcss/typography')],
 }
