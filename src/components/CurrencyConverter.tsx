@@ -85,6 +85,10 @@ const ConverterWrapper = styled.div`
   border-radius: 10px;
   border-top: solid 6px #3734A9;
 
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
+
   .exchange-icon {
     font-size: 1.5rem;
     font-weight: 800;

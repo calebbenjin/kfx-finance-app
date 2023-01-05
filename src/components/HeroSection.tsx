@@ -58,6 +58,7 @@ const HeroWrapper = styled.div`
     width: 50%;
     @media (max-width: 1024px) {
       padding-bottom: 3rem;
+      width: 100%;
     }
   }
 
