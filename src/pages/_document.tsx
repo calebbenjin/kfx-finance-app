@@ -82,35 +82,35 @@ export default class MyDocument extends Document {
           <meta name="description" content="" />
 
           {/*<!-- Google / Search Engine Tags -->*/}
-          <meta itemProp="name" content="FrontendInit | Lean.Build.Connect." />
-          <meta itemProp="description" content="" />
+          <meta itemProp="name" content="PayForeign" />
+          <meta itemProp="description" content="End-to-end payments and financial management in a single solution. Meet the right platform to help realize" />
           <meta
             itemProp="image"
-            content="https://res.cloudinary.com/calebbenjin/image/upload/v1670752371/Screenshot_186_lk5qov.png"
+            content="https://res.cloudinary.com/calebbenjin/image/upload/v1672940126/payforeign_mbdchs.png"
           />
 
           {/*<!-- Facebook Meta Tags -->*/}
-          <meta property="og:title" content="FrontendInit | Lean.Build.Connect." />
-          <meta property="og:description" content="FrontendInit is the community for frontend developers, providing the mentorship, roadmap, resources, hacktons, jobs, and inspiration that frontend developers need to kickstart their career." />
+          <meta property="og:title" content="PayForeign | Home " />
+          <meta property="og:description" content="End-to-end payments and financial management in a single solution. Meet the right platform to help realize" />
           <meta
             property="og:image"
-            content="https://res.cloudinary.com/calebbenjin/image/upload/v1670752371/Screenshot_186_lk5qov.png"
+            content="https://res.cloudinary.com/calebbenjin/image/upload/v1672940126/payforeign_mbdchs.png"
           />
-          <meta property="og:url" content="https://frontendinit.com/" />
+          <meta property="og:url" content="https://payforeign.com/" />
           <meta property="og:type" content="website" />
 
           {/*<!-- Twitter Meta Tags -->*/}
-          <meta name="twitter:title" content="FrontendInit | Lean.Build.Connect." />
-          <meta name="twitter:description" content="FrontendInit is the community for frontend developers, providing the mentorship, roadmap, resources, hacktons, jobs, and inspiration that frontend developers need to kickstart their career." />
+          <meta name="twitter:title" content="PayForeign | Home" />
+          <meta name="twitter:description" content="End-to-end payments and financial management in a single solution. Meet the right platform to help realize" />
           <meta
             name="twitter:image"
-            content="https://res.cloudinary.com/calebbenjin/image/upload/v1670752371/Screenshot_186_lk5qov.png"
+            content="https://res.cloudinary.com/calebbenjin/image/upload/v1672940126/payforeign_mbdchs.png"
           />
           <meta name="twitter:card" content="summary_large_image" />
 
           <meta
             property="og:image"
-            content="https://res.cloudinary.com/calebbenjin/image/upload/v1670752371/Screenshot_186_lk5qov.png"
+            content="https://res.cloudinary.com/calebbenjin/image/upload/v1672940126/payforeign_mbdchs.png"
           ></meta>
       </Head>
       <body>
