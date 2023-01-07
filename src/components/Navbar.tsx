@@ -7,6 +7,7 @@ import cn from 'classnames';
 import Link from 'next/link'
 import styled from 'styled-components'
 import { SiFsecure } from 'react-icons/si'
+import Logo from './common/Logo';
 
 
 type NavProps = {
@@ -27,7 +28,7 @@ function NavItem({ href, text, isBtn }: NavProps) {
         isActive
           ? 'font-semibold bg-gray-100 text-gray-800 dark:text-gray-200'
           : 'font-normal text-gray-600 dark:text-gray-400', 
-        isBtn ? 'core-btn shadow-2xl ml-4 bg-blue py-3 px-6 hidden md:inline-block' : 'hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all'
+        isBtn ? 'core-btn shadow-2xl ml-4 bg-gradient py-3 px-6 hidden md:inline-block' : 'hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all'
       )}
     >
       <span className="capsize md:text-1xl">{text}</span>
@@ -40,10 +41,8 @@ const Navbar = () => {
     <NavWrapper className="shadow-sm">
         <div className="container">
           <nav className="flex items-center justify-between w-full relative border-gray-200 dark:border-gray-700 mx-auto xl:py-6 py-2 text-gray-900 bg-opacity-100">
-          {/* <a href="#skip" className="skip-nav">
-            Skip to content
-          </a> */}
-          <BrandLogo><SiFsecure className="logo" /> <span>Pay</span>Foreign</BrandLogo>
+          
+          <Logo />
           <div className="ml-[-0.60rem]">
             <MobileMenu />
             <NavItem href="/" text="Home" />
@@ -67,18 +66,6 @@ const NavWrapper = styled.div`
   top: 0;
   z-index: 1;
   background: #fffffff6;
-`
-
-const BrandLogo = styled.h2`
-  display: flex;
-  align-items: center;
-  font-weight: 900;
-  color: #3734A9;
-  font-size: 1.2rem;
-
-  .logo {
-    font-size: 2rem;
-  }
 `
 
 export default Navbar

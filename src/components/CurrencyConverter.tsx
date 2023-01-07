@@ -1,12 +1,46 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { FaExchangeAlt } from 'react-icons/fa'
 import { motion } from "framer-motion"
 import { Button } from './Button'
+import axios from 'axios'
 
 const CurrencyConverter = () => {
   const [isShow, setIsShow] = useState(true)
+  const [info, setInfo] = useState([]);
+  const [input, setInput] = useState(0);
+  const [from, setFrom] = useState("usd");
+  const [to, setTo] = useState("inr");
+  const [options, setOptions] = useState([]);
+  const [output, setOutput] = useState(0);
 
+  useEffect(() => {
+    fetchCurreny()
+  },[])
+
+  const fetchCurreny = async () => {
+    try {
+      const { data } = await axios.get(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${from}.json`)
+      setInfo(data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  // Calling the convert function whenever
+  // a user switches the currency
+  useEffect(() => {
+    // setOptions(Object.keys(info));
+    convert();
+  }, [info])
+
+  // Function to convert the currency
+  function convert() {
+    var rate = info[to];
+    setOutput(input * rate);
+  }
+
+  
   const handleConverter = () => {
     setIsShow(true)
   }
@@ -17,7 +51,7 @@ const CurrencyConverter = () => {
   return (
     <ConverterWrapper className="shadow-2xl">
       <div className="cardHeader flex align-center justify-between">
-        <button onClick={handleConverter} className={`p-4 ${isShow ? 'bg-light-blue text-blue' : 'bg-white'} w-full md:text-lg text-sm font-semibold`}>Currency Converter</button>
+        <button onClick={handleConverter} className={`${isShow ? 'bg-light-blue text-blue p-4' : ' p-4 bg-white'} w-full md:text-lg text-sm font-semibold`}>Currency Converter</button>
         <button onClick={handleTrack} className={`p-4 hover:bg-light-blue ${!isShow ? 'bg-light-blue text-blue' : 'bg-white'} transition-all w-full text-lg font-semibold md:text-lg text-sm`}>Track your Money</button>
       </div>
 
@@ -37,7 +71,7 @@ const CurrencyConverter = () => {
               <div className="from-wrapper">
                 <label htmlFor="from">From</label>
                 <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                  <option selected>Choose a country</option>
+                  <option>Choose a country</option>
                   <option value="US">United States</option>
                   <option value="CA">Canada</option>
                   <option value="FR">France</option>
@@ -48,7 +82,7 @@ const CurrencyConverter = () => {
               <div className="to-wrapper">
                 <label htmlFor="to">To</label>
                 <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                  <option selected>Choose a country</option>
+                  <option>Choose a country</option>
                   <option value="US">United States</option>
                   <option value="CA">Canada</option>
                   <option value="FR">France</option>
@@ -56,7 +90,7 @@ const CurrencyConverter = () => {
                 </select>
               </div>
             </div>
-            <Button className="core-btn shadow-2xl font-bold w-full mt-5 bg-blue py-3 px-6 md:inline-block">CONVERT</Button>
+            <Button className="core-btn shadow-2xl font-bold w-full mt-5 bg-gradient py-3 px-6 md:inline-block">CONVERT</Button>
           </form>
         </div>
       </ConverterCard>
@@ -75,7 +109,7 @@ const CurrencyConverter = () => {
               <label htmlFor="referenceNumber" className="text-gray-500">Reference Number</label>
               <input type="text" placeholder='Reference Number' />
             </div>
-            <Button className="core-btn shadow-2xl font-bold w-full mt-5 bg-blue py-3 px-6 md:inline-block">TRACK YOUR MONEY</Button>
+            <Button className="core-btn bg-gradient shadow-2xl font-bold w-full mt-5 py-3 px-6 md:inline-block">TRACK YOUR MONEY</Button>
           </form>
         </div>
       </TrackCard>
