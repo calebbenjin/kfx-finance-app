@@ -40,8 +40,7 @@ const Navbar = () => {
   return (
     <NavWrapper className="shadow-sm">
         <div className="container">
-          <nav className="flex items-center justify-between w-full relative border-gray-200 dark:border-gray-700 mx-auto xl:py-6 py-2 text-gray-900 bg-opacity-100">
-          
+          <nav className="flex items-center justify-between w-full relative border-gray-200 dark:border-gray-700 mx-auto xl:py-6 text-gray-900 bg-opacity-100">
           <Logo />
           <div className="ml-[-0.60rem]">
             <MobileMenu />

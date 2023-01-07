@@ -13,11 +13,19 @@ const BrandLogo = styled.h2`
   align-items: center;
   font-weight: 900;
   color: #0061d7;
- 
   font-size: 1.2rem;
+  margin: 0;
 
   .logo {
     font-size: 2rem;
+  }
+
+  @media (max-width: 786px) {
+    font-size: 1rem;
+
+    .logo {
+      font-size: 1.5rem;
+    }
   }
 `
 

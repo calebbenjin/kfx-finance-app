@@ -17,7 +17,7 @@ import DropdownContent from './DropdownContent';
 
 
 const AvatarDropdown = () => {
-  const node = useRef();
+  const node = useRef<HTMLInputElement>();
   // const auth = useContext(AuthContext);
   // const { authState } = auth;
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -62,7 +62,7 @@ const AvatarDropdown = () => {
         />
         <div className="px-3">
           {/* <p className="text-white">{authState.userInfo.firstName}</p> */}
-          <p className="text-white">John deo</p>
+          <p className="text-white">John</p>
         </div>
         <div className="mr-1 text-white">
           <FontAwesomeIcon icon={faCaretDown} />
