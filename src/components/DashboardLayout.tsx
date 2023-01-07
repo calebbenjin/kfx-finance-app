@@ -22,7 +22,6 @@ const DashboardLayout = ({children}: LayoutProps) => {
             {children}
           </div>
           <MobileNavbar />
-          {/* <Footer /> */}
         </div>
       </div>
     </div>

@@ -90,7 +90,7 @@ const NavItemContainer = ({ children }: NavItemContainerProp) => (
 
 const MobileNavbar = () => {
   return (
-    <NavWrapper className="shadow-2xl flex justify-between items-center px-5">
+    <NavWrapper className="shadow-2xl flex justify-between md:hidden items-center px-5">
       {navItems.map((navItem, i) => (
           <div key={i}>
             <NavItemContainer key={i}>

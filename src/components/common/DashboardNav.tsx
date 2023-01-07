@@ -23,7 +23,7 @@ const DashboardNav = () => {
       <div className="hidden md:block">
         <SearchInput />
       </div>
-      <div className="md:hidden block">
+      <div className="md:hidden">
         <Logo />
       </div>
       <div className="">
