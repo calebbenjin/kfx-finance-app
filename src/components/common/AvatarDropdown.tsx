@@ -11,28 +11,10 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { AuthContext } from './../context/AuthContext';
 import defaultAvatar from '../../assets/defaultAvatar.png';
-import DropdownItem from './DropdownItem';
 import Image from 'next/image';
+import DropdownContent from './DropdownContent';
 
 
-type DropdownContentProps = {
-  dropdownItems: any
-}
-
-
-const DropdownContent = ({ dropdownItems }: DropdownContentProps) => {
-  return (
-    <div className="bg-white w-full absolute p-4 shadow-lg rounded-lg mt-2">
-      {dropdownItems.map((item, i) => {
-        return (
-          <div className="mt-1" key={i}>
-            <DropdownItem item={item} />
-          </div>
-        );
-      })}
-    </div>
-  );
-};
 
 const AvatarDropdown = () => {
   const node = useRef();
