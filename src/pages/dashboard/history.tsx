@@ -15,47 +15,50 @@ import {
 const TransactionHistoryPage = () => {
   return (
     <DashboardLayout>
-      <PageTitle title="Transactions History" />
-      <div className="mb-4 grid">
-        <div className="w-full mb-4 sm:mb-0">
-          <DashboardMetric
-            title="Premier Savings"
-            acctNumber='9876644687'
-            value={formatCurrency('4000')}
-            icon={faChartArea}
-            status="Regular"
-          />
-        </div>
-      </div>
+      <div className="container">
 
-      <div className="supportcontainer pb-20">
-        <div className="list py-6 px-4 rounded-lg mt-4 bg-white flex items-center justify-between">
-          <div className="title flex items-center">
-            <BiTransferAlt className="text-4xl text-blue" />
-            <p className="ml-3 text-md">TFR FRM JOHN DEO TO Lily Opara</p>
+        <PageTitle title="Transactions History" />
+        <div className="mb-4 grid">
+          <div className="w-full mb-4 sm:mb-0">
+            <DashboardMetric
+              title="Premier Savings"
+              acctNumber='9876644687'
+              value={formatCurrency('4000')}
+              icon={faChartArea}
+              status="Regular"
+            />
           </div>
-          <p className="ml-2 text-md text-red">NGN{formatCurrency('2560')}</p>
         </div>
-        <div className="list py-6 px-4 rounded-lg mt-4 bg-white flex items-center justify-between">
-          <div className="title flex items-center">
-            <BiTransferAlt className="text-4xl text-blue" />
-            <p className="ml-3 text-md">TFR FRM JOHN DEO TO Lily Opara</p>
+
+        <div className="supportcontainer mt-10 pb-20">
+          <div className="list py-6 px-4 rounded-lg mt-4 bg-white flex items-center justify-between">
+            <div className="title flex items-center">
+              <BiTransferAlt className="text-4xl text-blue" />
+              <p className="ml-3 text-md">TFR FRM JOHN DEO TO Lily Opara</p>
+            </div>
+            <p className="ml-2 text-md text-red">NGN{formatCurrency('2560')}</p>
           </div>
-          <p className="ml-2 text-md text-blue">NGN{formatCurrency('2560')}</p>
-        </div>
-        <div className="list py-6 px-4 rounded-lg mt-4 bg-white flex items-center justify-between">
-          <div className="title flex items-center">
-            <BiTransferAlt className="text-4xl text-blue" />
-            <p className="ml-3 text-md">TFR FRM JOHN DEO TO Lily Opara</p>
+          <div className="list py-6 px-4 rounded-lg mt-4 bg-white flex items-center justify-between">
+            <div className="title flex items-center">
+              <BiTransferAlt className="text-4xl text-blue" />
+              <p className="ml-3 text-md">TFR FRM JOHN DEO TO Lily Opara</p>
+            </div>
+            <p className="ml-2 text-md text-blue">NGN{formatCurrency('2560')}</p>
           </div>
-          <p className="ml-2 text-md text-red">NGN{formatCurrency('2560')}</p>
-        </div>
-        <div className="list py-6 px-4 rounded-lg mt-4 bg-white flex items-center justify-between">
-          <div className="title flex items-center">
-            <BiTransferAlt className="text-4xl text-blue" />
-            <p className="ml-3 text-md">TFR FRM JOHN DEO TO Lily Opara</p>
+          <div className="list py-6 px-4 rounded-lg mt-4 bg-white flex items-center justify-between">
+            <div className="title flex items-center">
+              <BiTransferAlt className="text-4xl text-blue" />
+              <p className="ml-3 text-md">TFR FRM JOHN DEO TO Lily Opara</p>
+            </div>
+            <p className="ml-2 text-md text-red">NGN{formatCurrency('2560')}</p>
           </div>
-          <p className="ml-2 text-md text-blue">NGN{formatCurrency('2560')}</p>
+          <div className="list py-6 px-4 rounded-lg mt-4 bg-white flex items-center justify-between">
+            <div className="title flex items-center">
+              <BiTransferAlt className="text-4xl text-blue" />
+              <p className="ml-3 text-md">TFR FRM JOHN DEO TO Lily Opara</p>
+            </div>
+            <p className="ml-2 text-md text-blue">NGN{formatCurrency('2560')}</p>
+          </div>
         </div>
       </div>
     </DashboardLayout>

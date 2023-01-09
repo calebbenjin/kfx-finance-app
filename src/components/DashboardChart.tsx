@@ -4,9 +4,9 @@ import { formatCurrency } from './../util';
 
 
 type ChartProps = {
-  salesData: [
+  salesData?: [
     {
-      date: string,
+      date: any,
       amount: string
     }
   ]

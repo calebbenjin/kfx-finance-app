@@ -3,37 +3,37 @@ import DashboardLayout from '@/components/DashboardLayout'
 import PageTitle from '@/components/common/PageTitle'
 import styled from 'styled-components'
 import Input from '@/components/common/Input'
+import { Button } from '@/components/Button'
 
 
 const PaymentPage = () => {
   return (
     <DashboardLayout>
-      <PageTitle title="Payment" />
-
-      <PaymentForm>
-        <h2 className="text-center">Send To Beneficiary</h2>
-
-        <form>
-          <div className="input-control">
-            <Input type="text" name="accountName"  placeholder="Beneficiary Account Name" />
-          </div>
-          <div className="input-control">
-            <input type="text" placeholder="Beneficiary Bank Name" />
-          </div>
-          <div className="input-control">
-            <input type="text" placeholder="Beneficiary Account Number" />
-          </div>
-          <div className="input-control">
-            <input type="text" placeholder="Amount" />
-          </div>
-          <div className="input-control">
-            <input type="text" placeholder="Narration" />
-          </div>
-          <div className="input-control">
-            <button className="w-full">PROCEED</button>
-          </div>
-        </form>
-      </PaymentForm>
+      <div className="container">
+        <PaymentForm>
+          <PageTitle title="Send To Beneficiary" />
+          <form className="mt-10">
+            <div className="input-control mb-3">
+              <Input type="text" name="accountName"  placeholder="Beneficiary Account Name" />
+            </div>
+            <div className="input-control mb-3">
+              <Input type="text" name="bankName" placeholder="Beneficiary Bank Name" />
+            </div>
+            <div className="input-control mb-3">
+              <Input type="text" name="accountNumber" placeholder="Beneficiary Account Number" />
+            </div>
+            <div className="input-control mb-3">
+              <Input type="text" name="amount" placeholder="Amount" />
+            </div>
+            <div className="input-control mb-3">
+              <Input type="text" name="narration" placeholder="Narration" />
+            </div>
+            <div className="input-control">
+              <Button className="core-btn shadow-2xl bg-brand text-gray-100 py-4 px-7 mr-4 w-full">PROCEED</Button>
+            </div>
+          </form>
+        </PaymentForm>
+      </div>
     </DashboardLayout>
   )
 }

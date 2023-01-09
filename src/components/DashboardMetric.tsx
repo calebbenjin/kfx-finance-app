@@ -12,7 +12,7 @@ type MetricProps = {
 
 const DashboardMetric = ({ title, acctNumber, status, value, icon }: MetricProps) => {
   return (
-    <div className="bg-white rounded-lg shadow-lg p-4 border-t-4 border-blue">
+    <div className="bg-white rounded-lg shadow-lg p-6 border-t-4 border-blue">
       <p className="text-gray-600 uppercase text-md md:text-lg font-bold">
         {title}
       </p>

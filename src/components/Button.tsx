@@ -2,19 +2,30 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import Link from 'next/link'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 
 interface ButtonTypes {
   children: React.ReactNode | React.ReactElement,
   onClick?: () => void,
   className: any,
-  href?: any
+  href?: any,
+  loading?: boolean,
+  loadingText?: string
 }
 
 
-const Button = ({children, onClick, className}: ButtonTypes) => {
+const Button = ({children, onClick, className, loading, loadingText}: ButtonTypes) => {
   return (
     <motion.button onClick={onClick} className={className}  whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-      {children}
+      {loading ? (
+      <span className="flex items-center">
+        <FontAwesomeIcon icon={faCircleNotch} spin />
+        <span className="ml-2">{loadingText}</span>
+      </span>
+    ) : (
+      <>{children}</>
+    )}
     </motion.button>
   )
 }

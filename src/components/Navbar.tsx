@@ -41,16 +41,16 @@ const Navbar = () => {
     <NavWrapper className="shadow-sm">
         <div className="container">
           <nav className="flex items-center justify-between w-full relative border-gray-200 dark:border-gray-700 mx-auto xl:py-6 text-gray-900 bg-opacity-100">
-          <Logo />
-          <div className="ml-[-0.60rem]">
-            <MobileMenu />
-            <NavItem href="/" text="Home" />
-            <NavItem href="/blog" text="How it works" />
-            <NavItem href="/about" text="About" />
-            <NavItem href="/login" text="Login" />
-            <NavItem href="/register" isBtn text="Start Free" />
-          </div>
-        </nav>
+            <Logo />
+            <div className="ml-[-0.60rem]">
+              <MobileMenu />
+              <NavItem href="/" text="Home" />
+              <NavItem href="/blog" text="How it works" />
+              <NavItem href="/about" text="About" />
+              <NavItem href="/login" text="Login" />
+              <NavItem href="/register" isBtn text="Start Free" />
+            </div>
+          </nav>
         </div>
       </NavWrapper>
   )

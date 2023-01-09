@@ -13,7 +13,7 @@ const SupportPage = () => {
     <DashboardLayout>
       <PageTitle title="Support" />
 
-      <div className="supportcontainer pt-4">
+      <div className="supportcontainer pb-20 pt-4">
         <div className="list py-6 px-4 rounded-lg mt-4 bg-white flex items-center justify-between">
           <div className="title flex items-center">
             <FaUserTie className="text-3xl text-blue" />
