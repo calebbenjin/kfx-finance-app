@@ -91,6 +91,10 @@
   );
 }
 
+.text-red {
+  color: red;
+}
+
 img {
   /* width: 100%; */
 }

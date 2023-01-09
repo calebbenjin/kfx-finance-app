@@ -15,26 +15,26 @@ import Logo from './common/Logo';
 
 const navItems = [
   {
-    label: 'Dashboard',
+    label: 'Account',
     path: '/dashboard',
     icon: faChartLine,
     allowedRoles: ['user', 'admin']
   },
   {
-    label: 'Inventory',
-    path: 'inventory',
+    label: 'T-History',
+    path: '/dashboard/history',
     icon: faChartPie,
     allowedRoles: ['admin']
   },
   {
-    label: 'Account',
-    path: 'account',
+    label: 'Support',
+    path: '/dashboard/support',
     icon: faAddressCard,
     allowedRoles: ['user', 'admin']
   },
   {
     label: 'Settings',
-    path: 'settings',
+    path: '/dashboard/settings',
     icon: faCogs,
     allowedRoles: ['user', 'admin']
   },

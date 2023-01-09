@@ -6,43 +6,48 @@ import cn from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faChartLine,
-  faAddressCard,
-  faChartPie,
-  faCogs,
-  faDoorOpen
+  faList,
+  faHeadset,
+  faCogs
 } from '@fortawesome/free-solid-svg-icons';
 
 const navItems = [
   {
-    label: 'Dashboard',
+    label: 'Account',
     path: '/dashboard',
     icon: faChartLine,
     allowedRoles: ['user', 'admin']
   },
   {
-    label: 'Inventory',
-    path: 'inventory',
-    icon: faChartPie,
+    label: 'T-History',
+    path: '/dashboard/history',
+    icon: faList,
     allowedRoles: ['admin']
   },
+  // {
+  //   label: 'Account',
+  //   path: 'account',
+  //   icon: faAddressCard,
+  //   allowedRoles: ['user', 'admin']
+  // },
   {
-    label: 'Account',
-    path: 'account',
-    icon: faAddressCard,
+    label: 'Support',
+    path: '/dashboard/support',
+    icon: faHeadset,
     allowedRoles: ['user', 'admin']
   },
   {
     label: 'Settings',
-    path: 'settings',
+    path: '/dashboard/settings',
     icon: faCogs,
     allowedRoles: ['user', 'admin']
   },
-  {
-    label: 'Users',
-    path: 'users',
-    icon: faDoorOpen,
-    allowedRoles: ['admin']
-  }
+  // {
+  //   label: 'Users',
+  //   path: 'users',
+  //   icon: faDoorOpen,
+  //   allowedRoles: ['admin']
+  // }
 ];
 
 type NavProps = {
@@ -68,15 +73,15 @@ function NavItem({ navItem }: NavProps) {
       href={navItem.path}
       className={cn(
         isActive
-          ? 'bg-gradient px-4 sm:px-4 justify-center py-3 rounded-full flex text-gray-100 hover:text-blue-500 transform'
+          ? 'text-blue px-4 sm:px-4 justify-center py-3 rounded-full flex text-gray-100 hover:text-blue-500 transform'
           : 'px-2 sm:px-4 justify-center sm:justify-start py-3 rounded-full flex text-lg text-gray-600 hover:text-blue transform hover:translate-x-1 transition ease-in-out duration-100', 
       )}
     >
-      <div className="flex items-center">
+      <div className="flex items-center flex-col">
         <div className="mr-0 sm:mr-4">
-          <FontAwesomeIcon icon={navItem.icon} />
+          <FontAwesomeIcon className="text-2xl" icon={navItem.icon} />
         </div>
-        <span className="hidden sm:block">
+        <span className="sm:block text-sm">
           {navItem.label}
         </span>
       </div>
@@ -90,7 +95,7 @@ const NavItemContainer = ({ children }: NavItemContainerProp) => (
 
 const MobileNavbar = () => {
   return (
-    <NavWrapper className="shadow-2xl flex justify-between md:hidden items-center px-5">
+    <NavWrapper className="shadow-2xl flex justify-between md:hidden bg-white items-center px-5">
       {navItems.map((navItem, i) => (
           <div key={i}>
             <NavItemContainer key={i}>
