@@ -30,27 +30,9 @@ const AvatarDropdown = () => {
     }
   ];
 
-  const handleClick = (e:any) => {
-    if (!node.current.contains(e.target)) {
-      setDropdownOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClick);
-
-    return () => {
-      document.removeEventListener(
-        'mousedown',
-        handleClick
-      );
-    };
-  }, []);
-
   return (
-    <div ref={node}>
+    <div>
       <button
-        ref={node}
         className="flex rounded-full items-center py-2 px-3 bg-gradient focus:outline-none shadow-lg"
         onClick={() => setDropdownOpen(!dropdownOpen)}
       >
@@ -69,11 +51,11 @@ const AvatarDropdown = () => {
         </div>
       </button>
 
-      {dropdownOpen && (
+      {dropdownOpen ? (
         <div className="relative">
           <DropdownContent dropdownItems={dropdownItems} />
         </div>
-      )}
+      ) : null }
     </div>
   );
 };

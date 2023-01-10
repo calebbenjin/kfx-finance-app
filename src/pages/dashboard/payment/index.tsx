@@ -1,14 +1,24 @@
-import React from 'react'
+import React, {useState} from 'react'
 import DashboardLayout from '@/components/DashboardLayout'
 import PageTitle from '@/components/common/PageTitle'
 import styled from 'styled-components'
 import Input from '@/components/common/Input'
 import { Button } from '@/components/Button'
+import PreviewTransferDetails from '@/components/PreviewTransferDetails'
 
 
 const PaymentPage = () => {
+  const [isOpen, setIsOpen] = useState(false)
+
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault()
+    setIsOpen(true)
+  }
+
   return (
     <DashboardLayout>
+      <PreviewTransferDetails isOpen={isOpen} isClose={() => setIsOpen(false)} />
       <div className="container">
         <PaymentForm>
           <PageTitle title="Send To Beneficiary" />
@@ -29,7 +39,7 @@ const PaymentPage = () => {
               <Input type="text" name="narration" placeholder="Narration" />
             </div>
             <div className="input-control">
-              <Button className="core-btn shadow-2xl bg-brand text-gray-100 py-4 px-7 mr-4 w-full">PROCEED</Button>
+              <Button onClick={handleSubmit} className="core-btn shadow-2xl bg-gradient text-gray-100 py-4 px-7 mr-4 w-full">PROCEED</Button>
             </div>
           </form>
         </PaymentForm>

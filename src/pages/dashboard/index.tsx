@@ -18,6 +18,7 @@ import { GrTransaction } from 'react-icons/gr'
 import Card from '@/components/common/Card'
 import { LinkButton, Button } from '@/components/Button';
 import { useRouter } from 'next/router';
+import PreviewTransferDetails from '@/components/PreviewTransferDetails';
 
 const DashboardPage = () => {
   const [dashboardData, setDashboardData] = useState();
@@ -56,11 +57,11 @@ const DashboardPage = () => {
         </div>
         <div className="w-full mt-4">
           <Card>
-            {dashboardData && (
+            {/* {dashboardData && (
               <DashboardChart
                 // salesData={dashboardData.graphData}
               />
-            )}
+            )} */}
           </Card>
         </div>
       </div>

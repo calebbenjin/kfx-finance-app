@@ -4,7 +4,7 @@ import { formatCurrency } from './../util';
 
 
 type ChartProps = {
-  salesData?: [
+  salesData: [
     {
       date: any,
       amount: string
@@ -40,28 +40,29 @@ const DashboardChart = ({ salesData }: ChartProps) => {
   };
 
   return (
-    <LineChart
-      height={100}
-      data={chartData}
-      options={{
-        elements: {
-          line: {
-            tension: 0.3,
-            borderWidth: 1.5
-          },
-          point: { radius: 0 }
-        },
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                callback: (value: string) => formatCurrency(value)
-              }
-            }
-          ]
-        }
-      }}
-    />
+    // <LineChart
+    //   height={100}
+    //   data={chartData}
+    //   options={{
+    //     elements: {
+    //       line: {
+    //         tension: 0.3,
+    //         borderWidth: 1.5
+    //       },
+    //       point: { radius: 0 }
+    //     },
+    //     scales: {
+    //       yAxes: [
+    //         {
+    //           ticks: {
+    //             callback: (value: string) => formatCurrency(value)
+    //           }
+    //         }
+    //       ]
+    //     }
+    //   }}
+    // />
+    <h1>Hey Chart</h1>
   );
 };
 

@@ -31,14 +31,14 @@ const CurrencyConverter = () => {
   // a user switches the currency
   useEffect(() => {
     // setOptions(Object.keys(info));
-    convert();
+    // convert();
   }, [info])
 
   // Function to convert the currency
-  function convert() {
-    var rate = info[to];
-    setOutput(input * rate);
-  }
+  // function convert() {
+  //   var rate = info[to];
+  //   setOutput(input * rate);
+  // }
 
   
   const handleConverter = () => {

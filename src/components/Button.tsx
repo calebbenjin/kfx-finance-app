@@ -7,7 +7,7 @@ import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 
 interface ButtonTypes {
   children: React.ReactNode | React.ReactElement,
-  onClick?: () => void,
+  onClick?: (e: any) => void,
   className: any,
   href?: any,
   loading?: boolean,
