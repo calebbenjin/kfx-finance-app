@@ -4,6 +4,7 @@ import { FaExchangeAlt } from 'react-icons/fa'
 import Dropdown from 'react-dropdown';
 import { Button } from './Button'
 import axios from 'axios'
+import TrackingModal from './TrackingModal';
 
 const CurrencyConverter = () => {
   const [isShow, setIsShow] = useState(false)
@@ -13,6 +14,7 @@ const CurrencyConverter = () => {
   const [to, setTo] = useState("zar");
   const [options, setOptions] = useState<any>([]);
   const [output, setOutput] = useState(0);
+  const [isOpen, setIsOpen] = useState(false)
 
 
   useEffect(() => {
@@ -54,8 +56,14 @@ const CurrencyConverter = () => {
     setIsShow(false)
   }
 
+  const handleSubmit = (e: any) => {
+    e.preventDefault()
+    setIsOpen(true)
+  }
+
   return (
     <ConverterWrapper className="shadow-2xl">
+      <TrackingModal isOpen={isOpen} isClose={() => setIsOpen(false)} />
       <div className="cardHeader flex align-center justify-between">
         <button onClick={handleConverter} className={`${isShow ? 'bg-white p-4' : ' p-4 bg-light-blue text-blue'} w-full md:text-lg text-sm font-semibold`}>Currency Converter</button>
         <button onClick={handleTrack} className={`p-4 hover:bg-light-blue ${!isShow ? 'bg-white' : 'bg-light-blue text-blue'} transition-all w-full text-lg font-semibold md:text-lg text-sm`}>Track your Money</button>
@@ -100,7 +108,7 @@ const CurrencyConverter = () => {
           <p className="pb-2 text-lg text-gray-500">Enter the required information below to see if your money is available.</p>
         </div>
         <div className="card-body text-left">
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="input-control">
               <label htmlFor="email" className="text-gray-500">Email</label>
               <input type="email" placeholder='Email address' />
@@ -109,7 +117,7 @@ const CurrencyConverter = () => {
               <label htmlFor="referenceNumber" className="text-gray-500">Reference Number</label>
               <input type="text" placeholder='Reference Number' />
             </div>
-            <Button className="core-btn bg-gradient shadow-2xl font-bold w-full mt-5 py-3 px-6 md:inline-block">TRACK YOUR MONEY</Button>
+            <Button loadingText='TRACKING....' loading={isOpen} className="core-btn bg-gradient shadow-2xl font-bold w-full mt-5 py-3 px-6 md:inline-block">TRACK YOUR MONEY</Button>
           </form>
         </div>
       </TrackCard>
