@@ -40,7 +40,7 @@ const navItems = [
   },
   {
     label: 'Users',
-    path: 'users',
+    path: '/dashboard/users',
     icon: faDoorOpen,
     allowedRoles: ['admin']
   }

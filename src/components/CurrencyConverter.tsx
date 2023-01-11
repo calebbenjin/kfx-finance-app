@@ -1,44 +1,50 @@
 import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { FaExchangeAlt } from 'react-icons/fa'
-import { motion } from "framer-motion"
+import Dropdown from 'react-dropdown';
 import { Button } from './Button'
 import axios from 'axios'
 
 const CurrencyConverter = () => {
-  const [isShow, setIsShow] = useState(true)
-  const [info, setInfo] = useState([]);
-  const [input, setInput] = useState(0);
+  const [isShow, setIsShow] = useState(false)
+  const [info, setInfo] = useState<any>([]);
+  const [input, setInput] = useState<any>(0);
   const [from, setFrom] = useState("usd");
-  const [to, setTo] = useState("inr");
-  const [options, setOptions] = useState([]);
+  const [to, setTo] = useState("zar");
+  const [options, setOptions] = useState<any>([]);
   const [output, setOutput] = useState(0);
 
-  useEffect(() => {
-    fetchCurreny()
-  },[])
 
-  const fetchCurreny = async () => {
-    try {
-      const { data } = await axios.get(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${from}.json`)
-      setInfo(data)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  useEffect(() => {
+    axios.get(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${from}.json`)
+   .then((res) => {
+      setInfo(res.data[from]);
+    })
+  }, [from]);
+  
 
   // Calling the convert function whenever
   // a user switches the currency
   useEffect(() => {
-    // setOptions(Object.keys(info));
-    // convert();
+    setOptions(Object.keys(info));
+    convert();
   }, [info])
 
+  console.log(info)
+
   // Function to convert the currency
-  // function convert() {
-  //   var rate = info[to];
-  //   setOutput(input * rate);
-  // }
+  function convert() {
+    var rate = info[to];
+    console.log(info[to])
+    setOutput(input * rate);
+  }
+
+   // Function to switch between two currency
+   function flip() {
+    var temp = from;
+    setFrom(to);
+    setTo(temp);
+  }
 
   
   const handleConverter = () => {
@@ -51,47 +57,41 @@ const CurrencyConverter = () => {
   return (
     <ConverterWrapper className="shadow-2xl">
       <div className="cardHeader flex align-center justify-between">
-        <button onClick={handleConverter} className={`${isShow ? 'bg-light-blue text-blue p-4' : ' p-4 bg-white'} w-full md:text-lg text-sm font-semibold`}>Currency Converter</button>
-        <button onClick={handleTrack} className={`p-4 hover:bg-light-blue ${!isShow ? 'bg-light-blue text-blue' : 'bg-white'} transition-all w-full text-lg font-semibold md:text-lg text-sm`}>Track your Money</button>
+        <button onClick={handleConverter} className={`${isShow ? 'bg-white p-4' : ' p-4 bg-light-blue text-blue'} w-full md:text-lg text-sm font-semibold`}>Currency Converter</button>
+        <button onClick={handleTrack} className={`p-4 hover:bg-light-blue ${!isShow ? 'bg-white' : 'bg-light-blue text-blue'} transition-all w-full text-lg font-semibold md:text-lg text-sm`}>Track your Money</button>
       </div>
 
       {isShow ? 
       <ConverterCard className="converter-card pb-10 transition-all">
         <div className="card-header text-center p-10">
-          <p className="pb-2 text-gray-500">Exchange Rate</p>
-          <h1 className="md:text-3xl text-3xl font-semibold">$22.97</h1>
+          <p className="pb-2 text-gray-500">Amount</p>
+          {input ? <h1 className="md:text-3xl text-3xl font-semibold">{input+" "+from+" = "+output.toFixed(2) + " " + to}</h1> : <h1 className="md:text-4xl text-3xl font-bold">0.00</h1>}
         </div>
         <div className="card-body text-left">
-          <form>
-            <div className="input-control">
-              <label htmlFor="amount" className="text-gray-500">Amount</label>
-              <input type="text" placeholder='Amount' />
+          <div className="input-control">
+            <label htmlFor="amount" className="text-gray-500">Amount</label>
+            <input type="text" placeholder='Amount' onChange={(e) => setInput(e.target.value)} />
+          </div>
+          <div className="exchange-wrapper flex items-center justify-between my-4">
+            <div className="from-wrapper">
+              <label htmlFor="from">From</label>
+              <select id="countries" value={from} onChange={(e) => { setFrom(e.target.value) }} className="bg-gray-50 border uppercase border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              {options.map((country: string) => (
+                  <option value={country} className="uppercase">{country}</option>
+                ))}
+              </select>
             </div>
-            <div className="exchange-wrapper flex items-center justify-between my-4">
-              <div className="from-wrapper">
-                <label htmlFor="from">From</label>
-                <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                  <option>Choose a country</option>
-                  <option value="US">United States</option>
-                  <option value="CA">Canada</option>
-                  <option value="FR">France</option>
-                  <option value="DE">Germany</option>
-                </select>
-              </div>
-              <FaExchangeAlt className="exchange-icon" />
-              <div className="to-wrapper">
-                <label htmlFor="to">To</label>
-                <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                  <option>Choose a country</option>
-                  <option value="US">United States</option>
-                  <option value="CA">Canada</option>
-                  <option value="FR">France</option>
-                  <option value="DE">Germany</option>
-                </select>
-              </div>
+            <FaExchangeAlt className="sm:h-6 sm:w-6"  onClick={() => { flip()}} />
+            <div className="to-wrapper">
+              <label htmlFor="to">To</label>
+              <select  id="countries" value={to} onChange={(e) => {setTo(e.target.value)}} className="bg-gray-50 uppercase border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                {options.map((country: string) => (
+                  <option value={country} className="uppercase">{country}</option>
+                ))}
+              </select>
             </div>
-            <Button className="core-btn shadow-2xl font-bold w-full mt-5 bg-gradient py-3 px-6 md:inline-block">CONVERT</Button>
-          </form>
+          </div>
+          <Button onClick={()=>{convert()}} className="core-btn shadow-2xl font-bold w-full mt-5 bg-gradient py-3 px-6 md:inline-block">CONVERT</Button>
         </div>
       </ConverterCard>
       :
