@@ -1,10 +1,15 @@
 import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { FaExchangeAlt } from 'react-icons/fa'
-import Dropdown from 'react-dropdown';
+import { Form, Formik } from 'formik';
+import * as Yup from 'yup';
 import { Button } from './Button'
 import axios from 'axios'
 import TrackingModal from './TrackingModal';
+import { publicFetch } from '@/config/fetch';
+import FormSuccess from './FormSuccess';
+import FormError from './FormError';
+import FormInput from './FormInput';
 
 const CurrencyConverter = () => {
   const [isShow, setIsShow] = useState(false)
@@ -15,6 +20,9 @@ const CurrencyConverter = () => {
   const [options, setOptions] = useState<any>([]);
   const [output, setOutput] = useState(0);
   const [isOpen, setIsOpen] = useState(false)
+  const [signupSuccess, setSignupSuccess] = useState<any>('');
+  const [signupError, setSignupError] = useState<any>();
+  const [loginLoading, setLoginLoading] = useState(false);
 
 
   useEffect(() => {
@@ -32,12 +40,9 @@ const CurrencyConverter = () => {
     convert();
   }, [info])
 
-  console.log(info)
-
   // Function to convert the currency
   function convert() {
     var rate = info[to];
-    console.log(info[to])
     setOutput(input * rate);
   }
 
@@ -56,9 +61,30 @@ const CurrencyConverter = () => {
     setIsShow(false)
   }
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault()
-    setIsOpen(true)
+  const checkStatusSchema = Yup.object().shape({
+    referenceNum: Yup.string().required('referenceNum is required'),
+    email: Yup.string()
+      .email('Invalid email')
+      .required('Email is required')
+  });
+
+  const handleCheckPaymentStatus = async (credentials: any) => {
+    try {
+      setLoginLoading(true)
+      const { data } = await axios.post('http://localhost:8080/api/v1/users', credentials)
+      setSignupSuccess(data.message)
+      setSignupError("")
+      setTimeout(() => {
+        setIsOpen(true)
+        setLoginLoading(false)
+        setSignupSuccess('')
+      }, 2000)
+    } catch (error: any) {
+      setLoginLoading(false);
+      const { data } = error.response;
+      setSignupError(data.message);
+      setSignupSuccess('');
+    }
   }
 
   return (
@@ -108,17 +134,40 @@ const CurrencyConverter = () => {
           <p className="pb-2 text-lg text-gray-500">Enter the required information below to see if your money is available.</p>
         </div>
         <div className="card-body text-left">
-          <form onSubmit={handleSubmit}>
-            <div className="input-control">
-              <label htmlFor="email" className="text-gray-500">Email</label>
-              <input type="email" placeholder='Email address' />
-            </div>
-            <div className="input-control">
-              <label htmlFor="referenceNumber" className="text-gray-500">Reference Number</label>
-              <input type="text" placeholder='Reference Number' />
-            </div>
-            <Button loadingText='TRACKING....' loading={isOpen} className="core-btn bg-gradient shadow-2xl font-bold w-full mt-5 py-3 px-6 md:inline-block">TRACK YOUR MONEY</Button>
-          </form>
+          <Formik initialValues={{ referenceNum: '', email: ''}} onSubmit={values => handleCheckPaymentStatus(values)} validationSchema={checkStatusSchema}>
+            {() => (
+              <Form>
+                {signupSuccess && (
+                  <FormSuccess text={signupSuccess} />
+                )}
+                {signupError && (
+                  <FormError text={signupError} />
+                )}
+                <input
+                  type="hidden"
+                  name="remember"
+                  value="true"
+                />
+                <div className="input-control">
+                  <label htmlFor="email" className="text-gray-500">Email</label>
+                  <FormInput ariaLabel="email"
+                    name="email"
+                    type="email"
+                    placeholder="Email address"
+                  />
+                </div>
+                <div className="input-control">
+                  <label htmlFor="referenceNum" className="text-gray-500">Reference Number</label>
+                  <FormInput ariaLabel="referenceNum"
+                    name="referenceNum"
+                    type="text"
+                    placeholder="Reference Number"
+                  />
+                </div>
+                <Button type="submit" loadingText='TRACKING....' loading={loginLoading} className="core-btn bg-gradient shadow-2xl font-bold w-full mt-5 py-3 px-6 md:inline-block">TRACK YOUR MONEY</Button>
+              </Form>
+            )}
+          </Formik>
         </div>
       </TrackCard>
       }

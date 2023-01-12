@@ -4,9 +4,7 @@ import React, {
   useEffect
 } from 'react';
 import {
-  faChartArea,
-  faDollarSign,
-  faUserPlus
+  faChartArea
 } from '@fortawesome/free-solid-svg-icons';
 import DashboardChart from '@/components/DashboardChart'
 import DashboardLayout from '@/components/DashboardLayout'
@@ -16,13 +14,33 @@ import { formatCurrency } from '@/config/index'
 import { IoIosSend } from 'react-icons/io'
 import { GrTransaction } from 'react-icons/gr'
 import Card from '@/components/common/Card'
-import { LinkButton, Button } from '@/components/Button';
 import { useRouter } from 'next/router';
-import PreviewTransferDetails from '@/components/PreviewTransferDetails';
+import { FetchContext } from '@/context/FetchContext';
+import { Button } from '@/components/Button';
+import axios from 'axios'
 
 const DashboardPage = () => {
+  const fetchContext = useContext(FetchContext)
   const [dashboardData, setDashboardData] = useState();
   const router = useRouter()
+
+  const userID = '63bf41e08693d92fbdff81a8'
+  const url = 'http://localhost:8080/api/v1'
+
+  useEffect(() => {
+    const getDashboardData = async () => {
+      try {
+        const { data } = await axios.get(`${url}/users/${userID}`)
+        setDashboardData(data.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    getDashboardData()
+  }, [fetchContext])
+
+  console.log(dashboardData)
 
   
   const handlePayment = () => {

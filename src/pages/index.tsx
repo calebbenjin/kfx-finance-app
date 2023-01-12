@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import { useContext } from 'react'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import Layout from '@/components/Layout'
@@ -10,10 +10,15 @@ import LatestTractionsSection from '@/components/LatestTractionsSection'
 import ChooseSection from '@/components/ChooseSection'
 import TrackMoneySection from '@/components/TrackMoneySection'
 import Footer from '@/components/Footer'
+import { AuthContext } from '@/context/AuthContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const context = useContext(AuthContext)
+
+  console.log(context)
+  
   return (
     <Layout>
       <HeroSection />
