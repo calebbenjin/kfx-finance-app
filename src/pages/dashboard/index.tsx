@@ -18,10 +18,19 @@ import { useRouter } from 'next/router';
 import { FetchContext } from '@/context/FetchContext';
 import { Button } from '@/components/Button';
 import axios from 'axios'
+import { salesData } from '../../../dev-data';
+
+
+type dataProps = {
+  amount: number,
+  recieveAmount: number | undefined,
+  firstname: string,
+  lastname: string
+}
+
 
 const DashboardPage = () => {
   const fetchContext = useContext(FetchContext)
-  const [dashboardData, setDashboardData] = useState();
   const router = useRouter()
 
   const userID = '63bf41e08693d92fbdff81a8'
@@ -31,7 +40,7 @@ const DashboardPage = () => {
     const getDashboardData = async () => {
       try {
         const { data } = await axios.get(`${url}/users/${userID}`)
-        setDashboardData(data.data)
+        setDashboardData(data?.data?.user)
       } catch (error) {
         console.log(error)
       }
@@ -39,6 +48,8 @@ const DashboardPage = () => {
 
     getDashboardData()
   }, [fetchContext])
+
+  const [dashboardData, setDashboardData] = useState<dataProps>();
 
   console.log(dashboardData)
 
@@ -49,17 +60,19 @@ const DashboardPage = () => {
 
   return (
     <DashboardLayout>
+      {dashboardData ? 
       <div className="container">
-        <PageTitle title="Welcome John Deo" />
+        <PageTitle title={`Welcome ${dashboardData?.firstname} ${dashboardData?.lastname}`} />
         <div className="mb-4">
           <div className="w-full mb-4 sm:mb-0">
+            {dashboardData ?
             <DashboardMetric
               title="Premier Savings"
               acctNumber='9876644687'
-              value={formatCurrency('4000')}
+              value={formatCurrency(dashboardData?.recieveAmount)}
               icon={faChartArea}
               status="Regular"
-            />
+            /> : "Loading..." }
           </div>
 
           <Button onClick={handlePayment} className="core-rounded-btn mt-6 md:w-auto w-full shadow-2xl bg-gradient text-gray-100 py-3 px-6 md:py-4 md:px-7 flex items-center justify-between"><span>Proceed to receive payment</span> <IoIosSend className="playstore-icon ml-10" /> </Button>
@@ -77,12 +90,12 @@ const DashboardPage = () => {
           <Card>
             {/* {dashboardData && (
               <DashboardChart
-                // salesData={dashboardData.graphData}
+                salesData={salesData}
               />
             )} */}
           </Card>
         </div>
-      </div>
+      </div> : "Loading..." }
     </DashboardLayout>
   )
 }

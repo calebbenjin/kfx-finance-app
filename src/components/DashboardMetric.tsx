@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type MetricProps = {
   title: string,
-  value: string,
+  value: number | undefined,
   icon: any,
   acctNumber?: string,
   status?: string 

@@ -23,6 +23,7 @@ const CurrencyConverter = () => {
   const [signupSuccess, setSignupSuccess] = useState<any>('');
   const [signupError, setSignupError] = useState<any>();
   const [loginLoading, setLoginLoading] = useState(false);
+  const [trackingData, setTrackingData] = useState({});
 
 
   useEffect(() => {
@@ -73,6 +74,7 @@ const CurrencyConverter = () => {
       setLoginLoading(true)
       const { data } = await axios.post('http://localhost:8080/api/v1/users', credentials)
       setSignupSuccess(data.message)
+      setTrackingData(data?.data)
       setSignupError("")
       setTimeout(() => {
         setIsOpen(true)
@@ -89,7 +91,7 @@ const CurrencyConverter = () => {
 
   return (
     <ConverterWrapper className="shadow-2xl">
-      <TrackingModal isOpen={isOpen} isClose={() => setIsOpen(false)} />
+      <TrackingModal isOpen={isOpen} data={trackingData} isClose={() => setIsOpen(false)} />
       <div className="cardHeader flex align-center justify-between">
         <button onClick={handleConverter} className={`${isShow ? 'bg-white p-4' : ' p-4 bg-light-blue text-blue'} w-full md:text-lg text-sm font-semibold`}>Currency Converter</button>
         <button onClick={handleTrack} className={`p-4 hover:bg-light-blue ${!isShow ? 'bg-white' : 'bg-light-blue text-blue'} transition-all w-full text-lg font-semibold md:text-lg text-sm`}>Track your Money</button>

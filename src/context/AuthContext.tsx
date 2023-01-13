@@ -20,18 +20,22 @@ type AuthInfoProps = {
 
 const AuthProvider = ({children}: AuthProps) => {
   const route = useRouter()
+  const token = localStorage.getItem('token')
+  const userInfo = localStorage.getItem('userInfo')
+  const expiresAt = localStorage.getItem('expiresAt')
 
   const [authState, setAuthState] = useState<any>({
-    token: "97283782fd8hdn93",
-    expiresAt: 23/4/2023,
-    userInfo: {
-      username: "JohnDeo",
-      role: "admin"
-    },
+    token,
+    expiresAt,
+    userInfo: userInfo ? JSON.parse(userInfo) : {}
   })
 
 
   const setAuthInfo = ({ token, expiresAt, userInfo}: AuthInfoProps) => {
+    localStorage.setItem('token', token)
+    localStorage.setItem('userInfo', JSON.stringify(userInfo))
+    localStorage.setItem('expiresAt', expiresAt)
+    
     setAuthState({
       token,
       expiresAt,

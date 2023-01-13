@@ -3,14 +3,9 @@ import { Line as LineChart } from 'react-chartjs-2';
 import { formatCurrency } from './../util';
 
 
-type ChartProps = {
-  salesData: [
-    {
-      date: any,
-      amount: string
-    }
-  ]
-}
+type ChartProps = [
+  salesData: any
+]
 
 const DashboardChart = ({ salesData }: ChartProps) => {
   const chartLabels = salesData.map(sale => sale.date);

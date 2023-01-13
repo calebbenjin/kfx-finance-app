@@ -2,16 +2,20 @@ import { useRef, useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import Modal from './Modal'
 import { BsCheck2Circle } from 'react-icons/bs'
+import { dateFormater, formatCurrency } from '../util'
 
 
 type PreviewProps = {
   isOpen: boolean,
-  isClose: any
+  isClose: any,
+  data: any
 }
 
-const TrackingModal = ({isOpen, isClose}:PreviewProps) => {
+const TrackingModal = ({isOpen, isClose, data}:PreviewProps) => {
 
   const cancelButtonRef = useRef(null)
+
+  console.log(data)
 
   return (
     <Modal isOpen={isOpen} cancelButtonRef={cancelButtonRef} isClose={isClose}>
@@ -22,44 +26,44 @@ const TrackingModal = ({isOpen, isClose}:PreviewProps) => {
               Transactions Completed
             </Dialog.Title>
             <p className="text-md text-gray-500 text-center px-4 sm:px-10">
-                This transactions has been successfully sent to John Deo.
+                This transactions has been successfully sent to {data.firstname} {data.lastname}.
               </p>
               <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-light-blue sm:mx-auto my-4 sm:h-20 sm:w-20">
                 <BsCheck2Circle className="h-10 w-10 text-blue" aria-hidden="true" />
               </div>
             <div className="mt-2">
               <div className="cardHeader flex items-center justify-between">
-                <h2 className="font-bold sm:text-lg text-gray-400 mt-5">Reference NO: 1687392040</h2>
+                <h2 className="font-bold sm:text-lg text-gray-400 mt-5">Reference NO: {data.referenceNum}</h2>
               </div>
 
               <div className="details mt-6 bg-light-blue p-3">
                 <div className="list flex items-center mb-2 justify-between border-b pb-2">
                   <p className="font-bold text-gray-500 text-sm sm:text-lg">Reciever:</p>
-                  <p className="font-semibold text-gray-500 text-sm sm:text-lg">John Deo</p>
+                  <p className="font-semibold text-gray-500 text-sm sm:text-lg">{data.reciever}</p>
                 </div>
                 <div className="list flex items-center mb-2 justify-between border-b pb-2">
                   <p className="font-bold text-gray-500 text-sm sm:text-lg">Send Amount:</p>
-                  <p className="font-semibold text-gray-500 text-sm sm:text-lg">20.00 USD</p>
+                  <p className="font-semibold text-gray-500 text-sm sm:text-lg">{formatCurrency(Number(data?.sendAmount))} {data.sendCurrency}</p>
                 </div>
                 <div className="list flex items-center mb-2 justify-between border-b pb-2">
                   <p className="font-bold text-gray-500 text-sm sm:text-lg">Reiever Amount:</p>
-                  <p className="font-semibold text-gray-500 text-sm sm:text-lg">20.00 USD</p>
+                  <p className="font-semibold text-gray-500 text-sm sm:text-lg">{formatCurrency(Number(data?.recieveAmount))} {data.recieveCurrency}</p>
                 </div>
                 <div className="list flex items-center mb-2 justify-between border-b pb-2">
                   <p className="font-bold text-gray-500 text-sm sm:text-lg">Recieve Method:</p>
-                  <p className="font-semibold text-gray-500 text-sm sm:text-lg">Bank</p>
+                  <p className="font-semibold text-gray-500 text-sm sm:text-lg">{data.recieveMethod}</p>
                 </div>
                 <div className="list flex items-center mb-2 justify-between border-b pb-2">
                   <p className="font-bold text-gray-500 text-sm sm:text-lg">Transaction Date:</p>
-                  <p className="font-semibold text-gray-500 text-sm sm:text-lg">06/12/2022</p>
+                  {/* <p className="font-semibold text-gray-500 text-sm sm:text-lg">{dateFormater(data?.transationDate)}</p> */}
                 </div>
                 <div className="list flex items-center mb-2 justify-between border-b pb-2">
                   <p className="font-bold text-gray-500 text-sm sm:text-lg">Pickup Date:</p>
-                  <p className="font-semibold text-gray-500 text-sm sm:text-lg">06/12/2022</p>
+                  {/* <p className="font-semibold text-gray-500 text-sm sm:text-lg">{dateFormater(data?.pickupDate)}</p> */}
                 </div>
                 <div className="list flex items-center mb-2 justify-between border-b pb-2">
                   <p className="font-bold text-gray-500 text-sm sm:text-lg">Local Agent Charge:</p>
-                  <p className="font-semibold text-gray-500 text-sm sm:text-lg">Not Paid</p>
+                  <p className={`font-semibold ${data.isPaid ? `text-green-500` : 'text-red-500'} text-sm sm:text-lg`}>{data.isPaid ? "Paid" : "Not Paid"}</p>
                 </div>
               </div>
             </div>
