@@ -1,6 +1,6 @@
 import  React, { createContext, useContext, useEffect, useState } from "react";
-import axios from 'axios'
-// import { AuthContext } from './AuthContext';
+import axios, { AxiosRequestConfig } from 'axios'
+import { AuthContext } from './AuthContext';
 
 
 interface FetchProviderProps {
@@ -12,18 +12,20 @@ const FetchContext = createContext<any | null>(null)
 const { Provider } = FetchContext
 
 const FetchProvider = ({ children }: FetchProviderProps) => {
-  // const authContext = useContext(AuthContext)
+  const authContext = useContext(AuthContext)
 
-  const fetchAxios = axios.create({
+  const authAxios = axios.create({
     baseURL: process.env.REACT_APP_API_URL
   });
 
-  fetchAxios.interceptors.request.use(
-    config => {
-      // config.headers 
+  authAxios.interceptors.request.use(
+    async (config: AxiosRequestConfig) => {
+      config.headers = config.headers ?? {}
+
+      config.headers.Authorization = `Bearer ${authContext.authState.token}`
       return config
     },
-    error => {
+    (error) => {
       return Promise.reject(error)
     }
   )
@@ -31,7 +33,7 @@ const FetchProvider = ({ children }: FetchProviderProps) => {
   return (
     <Provider
       value={{
-        fetchAxios
+        authAxios
       }}
     >
       {children}
