@@ -18,12 +18,12 @@ const navItems = [
     icon: faChartLine,
     allowedRoles: ['user', 'admin']
   },
-  {
-    label: 'T-History',
-    path: '/dashboard/history',
-    icon: faList,
-    allowedRoles: ['admin']
-  },
+  // {
+  //   label: 'T-History',
+  //   path: '/dashboard/history',
+  //   icon: faList,
+  //   allowedRoles: ['admin']
+  // },
   // {
   //   label: 'Account',
   //   path: 'account',
