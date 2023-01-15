@@ -6,6 +6,7 @@ import { IoIosArrowForward, IoIosChatboxes } from 'react-icons/io'
 import { GoIssueReopened } from 'react-icons/go'
 import { VscFeedback } from 'react-icons/vsc'
 import SupportModal from '@/components/supportModal'
+import { parseCookies } from '@/config/parseCookies';
 
 
 
@@ -52,6 +53,25 @@ const SupportPage = () => {
       </div>
     </DashboardLayout>
   )
+}
+
+export async function getServerSideProps({ req }: any) {
+  const { token } = parseCookies(req);
+
+  if (!token) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {
+      token: token
+    },
+  };
 }
 
 export default SupportPage

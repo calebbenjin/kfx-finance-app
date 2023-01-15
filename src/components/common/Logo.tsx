@@ -2,9 +2,16 @@ import React from 'react'
 import styled from 'styled-components'
 import { SiFsecure } from 'react-icons/si'
 
-const Logo = () => {
+type logoProps = {
+  isBage?: any
+}
+
+const Logo = ({isBage}: logoProps) => {
   return (
-    <BrandLogo><SiFsecure className="logo" /> <span>Pay</span>Foreign</BrandLogo>
+    <>
+    {isBage ? <BrandLogo><SiFsecure className="logo sm:h-20 sm:w-20 w-10 h-10" /></BrandLogo> : <BrandLogo><SiFsecure className="logo" /> <span>PayForeign</span></BrandLogo>}
+      
+    </>
   )
 }
 

@@ -9,24 +9,22 @@ import {
   faSignOutAlt
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { AuthContext } from './../context/AuthContext';
 import defaultAvatar from '../../assets/defaultAvatar.png';
 import Image from 'next/image';
 import DropdownContent from './DropdownContent';
+import { AuthContext } from '@/context/AuthContext';
 
 
 
 const AvatarDropdown = () => {
-  const node = useRef<HTMLInputElement>();
-  // const auth = useContext(AuthContext);
-  // const { authState } = auth;
+  const {authState, logout } = useContext(AuthContext);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const dropdownItems = [
     {
       title: 'Log Out',
       icon: faSignOutAlt,
-      // onClick: auth.logout
+      onClick: logout
     }
   ];
 
@@ -43,8 +41,7 @@ const AvatarDropdown = () => {
           width={50} height={50}
         />
         <div className="px-3">
-          {/* <p className="text-white">{authState.userInfo.firstName}</p> */}
-          <p className="text-white">John</p>
+          <p className="text-white">{authState?.firstName}</p>
         </div>
         <div className="mr-1 text-white">
           <FontAwesomeIcon icon={faCaretDown} />

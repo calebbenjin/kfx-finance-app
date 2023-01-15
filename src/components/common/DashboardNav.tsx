@@ -1,4 +1,3 @@
-import React from 'react';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AvatarDropdown from './AvatarDropdown';
@@ -19,10 +18,7 @@ const SearchInput = () => (
 
 const DashboardNav = () => {
   return (
-    <nav className="flex justify-between items-center px-4">
-      <div className="hidden md:block">
-        <SearchInput />
-      </div>
+    <nav className="flex sm:justify-end justify-between items-center p-4 bg-light-blue">
       <div className="md:hidden">
         <Logo />
       </div>

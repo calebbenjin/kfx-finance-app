@@ -7,32 +7,32 @@ type ChartProps = [
   salesData: any
 ]
 
-const DashboardChart = ({ salesData }: ChartProps) => {
-  const chartLabels = salesData.map(sale => sale.date);
-  const chartValues = salesData.map(sale => sale.amount);
+const DashboardChart = () => {
+  // const chartLabels = salesData.map(sale => sale.date);
+  // const chartValues = salesData.map(sale => sale.amount);
 
-  const chartData = (canvas: any) => {
-    const ctx = canvas.getContext('2d');
-    var gradientFill = ctx.createLinearGradient(
-      0,
-      0,
-      0,
-      250
-    );
-    gradientFill.addColorStop(0, 'rgba(0, 97, 215, 0.3)');
-    gradientFill.addColorStop(1, 'rgba(0, 200, 255, 0)');
-    return {
-      labels: chartLabels,
-      datasets: [
-        {
-          label: 'Sales',
-          borderColor: '#3182ce',
-          data: chartValues,
-          backgroundColor: gradientFill
-        }
-      ]
-    };
-  };
+  // const chartData = (canvas: any) => {
+  //   const ctx = canvas.getContext('2d');
+  //   var gradientFill = ctx.createLinearGradient(
+  //     0,
+  //     0,
+  //     0,
+  //     250
+  //   );
+  //   gradientFill.addColorStop(0, 'rgba(0, 97, 215, 0.3)');
+  //   gradientFill.addColorStop(1, 'rgba(0, 200, 255, 0)');
+  //   return {
+  //     labels: chartLabels,
+  //     datasets: [
+  //       {
+  //         label: 'Sales',
+  //         borderColor: '#3182ce',
+  //         data: chartValues,
+  //         backgroundColor: gradientFill
+  //       }
+  //     ]
+  //   };
+  // };
 
   return (
     // <LineChart

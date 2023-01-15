@@ -1,36 +1,157 @@
+import { useState, useContext } from 'react'
 import Layout from '@/components/Layout'
-import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 import styled from 'styled-components'
-import HeroImage from '../assets/heroimg.png'
+import { Form, Formik } from 'formik'
+import * as Yup from 'yup';
+import FormSuccess from '@/components/FormSuccess'
+import FormError from '@/components/FormError'
+import Label from '@/components/common/Label'
+import FormInput from '@/components/FormInput'
+import { AuthContext } from '@/context/AuthContext'
+import { publicFetch } from '@/config/fetch'
+import {Button} from '@/components/Button'
+import { useRouter } from 'next/router'
+import Logo from '@/components/common/Logo'
+
+
+const SignupSchema = Yup.object().shape({
+  firstName: Yup.string().required(
+    'First name is required'
+  ),
+  lastName: Yup.string().required('Last name is required'),
+  email: Yup.string()
+    .email('Invalid email')
+    .required('Email is required'),
+  password: Yup.string().required('Password is required')
+});
 
 const RegisterPage = () => {
+  const router = useRouter()
+  const {setAuthState} = useContext(AuthContext)
+  const [signupSuccess, setSignupSuccess] = useState<any>();
+  const [signupError, setSignupError] = useState<any>();
+  const [loginLoading, setLoginLoading] = useState<any>(false);
+
+
+
+  const submitCredentials = async (credentials: any) => {
+    try {
+      setLoginLoading(true);
+      const {data} = await publicFetch.post('signup', credentials)
+      setAuthState(data)
+      setSignupSuccess(data.message)
+      setSignupError('')
+      setTimeout(() => {
+        router.push('/login')
+      }, 3000)
+      // redirect
+    } catch (error: any) {
+      setLoginLoading(false);
+      const { data } = error.response;
+      setSignupError(data.message);
+      console.log(data.message)
+      setSignupSuccess('');
+    }
+  };
+
   return (
     <Layout>
       <Section>
-        <FormSection className="form-container">
-          <div className="container mx-auto text-center pt-10">
-            <h2 className='font-bold text-3xl my-4'>Create Account</h2>
-            <p className='font-semibold text-md text-gray-400 my-2'>Enter Your credentials</p>
-            <form>
-              <div className="input-control">
-                <input type="text" placeholder="First Name" />
-              </div>
-              <div className="input-control">
-                <input type="text" placeholder="Last Name" />
-              </div>
-              <div className="input-control">
-                <input type="text" placeholder="Email Address" />
-              </div>
-              <button className="core-btn w-full text-lg shadow-2xl mt-4 bg-blue text-gray-100 py-2 px-6 md:inline-block text-gray-50">Create Account</button>
-              <p className="mt-2 xl:mt-8">Already have an account? <Link href="/login" className='text-blue font-semibold' >Login</Link></p>
-            </form>
+        <FormSection>
+          <div className="container w-full sm:w-500 mx-auto pt-10">
+            <div className="flex justify-center items-center pb-6">
+              <Logo isBage />
+            </div>
+            <h2 className="mb-2 text-center text-xl sm:text-3xl leading-9 font-extrabold text-gray-900">
+              Sign up for an account
+            </h2>
+            {/* <p className='font-semibold text-md sm:mb-10 text-center text-gray-400 my-2'>Enter Your credentials</p> */}
+            <Formik
+              initialValues={{
+                firstName: '',
+                lastName: '',
+                email: '',
+                password: ''
+              }}
+              onSubmit={values =>
+                submitCredentials(values)
+              }
+              validationSchema={SignupSchema}
+            >
+              {() => (
+                <Form className="mt-8">
+                  {signupSuccess && (
+                    <FormSuccess text={signupSuccess} />
+                  )}
+                  {signupError && (
+                    <FormError text={signupError} />
+                  )}
+                  <input
+                    type="hidden"
+                    name="remember"
+                    value="true"
+                  />
+                  <div>
+                    <div className="flex sm:flex-row flex-col">
+                      <div className="mb-2 sm:mr-2 sm:w-1/2">
+                        <div className="mb-1">
+                          <Label text="First Name" />
+                        </div>
+                        <FormInput
+                          ariaLabel="First Name"
+                          name="firstName"
+                          type="text"
+                          placeholder="First Name"
+                        />
+                      </div>
+                      <div className="mb-2 sm:ml-2 sm:w-1/2">
+                        <div className="mb-1">
+                          <Label text="Last Name" />
+                        </div>
+                        <FormInput
+                          ariaLabel="Last Name"
+                          name="lastName"
+                          type="text"
+                          placeholder="Last Name"
+                        />
+                      </div>
+                    </div>
+                    <div className="mb-2">
+                      <div className="mb-1">
+                        <Label text="Email address" />
+                      </div>
+                      <FormInput
+                        ariaLabel="Email address"
+                        name="email"
+                        type="email"
+                        placeholder="Email address"
+                      />
+                    </div>
+                    <div>
+                      <div className="mb-1">
+                        <Label text="Password" />
+                      </div>
+                      <FormInput
+                        ariaLabel="Password"
+                        name="password"
+                        type="password"
+                        placeholder="Password"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="mt-6 text-center">
+                    <Button
+                      type="submit" loadingText='Creating account....' loading={loginLoading}
+                      className="core-btn w-full text-lg shadow-2xl mt-4 bg-gradient text-gray-100 py-2 px-6 md:inline-block text-gray-50">Create account</Button>
+                      <p className="mt-2 xl:mt-8">Already have an account? <Link href="/login" className='text-blue font-semibold'>Log in now</Link></p>
+                  </div>
+                </Form>
+              )}
+            </Formik>
           </div>
         </FormSection>
-        <BannerSection>
-          <Image src={HeroImage} alt="LoginImage" width={600} height={600} />
-        </BannerSection>
       </Section>
     </Layout>
   )
@@ -64,8 +185,13 @@ const FormSection = styled.section`
   }
 
   form {
-    width: 70%;
+    width: 40%;
     margin: 0 auto;
+
+    @media (max-width: 768px) {
+      width: 90%;
+      margin: 0 auto;
+    }
   }
 
   .input-control {
@@ -81,18 +207,6 @@ const FormSection = styled.section`
         padding: 10px;
       }
     }
-  }
-`
-
-const BannerSection = styled.section`
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  @media (max-width: 1024px) {
-    height: 100%;
   }
 `
 

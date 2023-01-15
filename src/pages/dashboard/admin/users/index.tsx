@@ -3,10 +3,10 @@ import DashboardLayout from '@/components/DashboardLayout'
 import PageTitle from '@/components/common/PageTitle'
 import { parseCookies } from '@/config/parseCookies';
 
-const SettingsPage = () => {
+const UsersPage = () => {
   return (
     <DashboardLayout>
-      <PageTitle title="Settings Page" />
+      <PageTitle title="All Users" />
     </DashboardLayout>
   )
 }
@@ -14,6 +14,7 @@ const SettingsPage = () => {
 export async function getServerSideProps({ req }: any) {
   const { token } = parseCookies(req);
   
+
   if (!token) {
     return {
       redirect: {
@@ -30,4 +31,4 @@ export async function getServerSideProps({ req }: any) {
   };
 }
 
-export default   SettingsPage
+export default UsersPage

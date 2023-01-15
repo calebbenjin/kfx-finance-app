@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import Input from '@/components/common/Input'
 import { Button } from '@/components/Button'
 import PreviewTransferDetails from '@/components/PreviewTransferDetails'
+import { parseCookies } from '@/config/parseCookies';
 
 
 const PaymentPage = () => {
@@ -57,5 +58,25 @@ const PaymentForm = styled.div`
     width: 90%;
   }
 `
+
+
+export async function getServerSideProps({ req }: any) {
+  const { token } = parseCookies(req);
+
+  if (!token) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {
+      token: token
+    },
+  };
+}
 
 export default PaymentPage

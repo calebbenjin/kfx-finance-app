@@ -1,5 +1,7 @@
-import { createContext, useState } from 'react'
+import { createContext, useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import { publicFetch } from '@/config/fetch';
+import axios from 'axios';
 
 const AuthContext = createContext<any | null>(null)
 const { Provider } = AuthContext;
@@ -9,67 +11,50 @@ type AuthProps = {
 }
 
 type AuthInfoProps = {
-  token: string,
   expiresAt: any | null,
-  userInfo: {
-      username: string,
-      role: string
-    } | {}
+  userInfo: any
   
 }
 
 const AuthProvider = ({children}: AuthProps) => {
   const route = useRouter()
-  const token = localStorage.getItem('token')
-  const userInfo = localStorage.getItem('userInfo')
-  const expiresAt = localStorage.getItem('expiresAt')
+  const [authState, setAuthState] = useState<any>({})
 
-  const [authState, setAuthState] = useState<any>({
-    token,
-    expiresAt,
-    userInfo: userInfo ? JSON.parse(userInfo) : {}
-  })
+  const userID = typeof window !== 'undefined' && localStorage.getItem('userID')
 
+  useEffect(() => {
+    const getAuthData = async () => {
+      try {
+        const { data } = await publicFetch.get(`${userID}`);
+        setAuthState(data?.data?.user);
+      } catch (err) {
+        console.log(err);
+      }
+    };
 
-  const setAuthInfo = ({ token, expiresAt, userInfo}: AuthInfoProps) => {
-    localStorage.setItem('token', token)
-    localStorage.setItem('userInfo', JSON.stringify(userInfo))
-    localStorage.setItem('expiresAt', expiresAt)
-    
-    setAuthState({
-      token,
-      expiresAt,
-      userInfo
-    })
-  }
+    getAuthData();
+  }, [userID]);
 
 
-  const isAuthenticated = () => {
-    if(!authState.token || !authState.expiresAt) {
-      return false
-    }
-    return Date.now() / 1000 < authState.expiresAt
-  }
 
   const isAdmin = () => {
     return authState.userInfo.role === 'admin'
   }
 
-  const logout = () => {
-
-    setAuthState({
-      token: null,
-      expiresAt: null,
-      userInfo: {}
-    })
-
-    route.push('/login')
+  const logout = async () => {
+    try {
+      const data = await axios.post(`${process.env.NEXT_APP_API_URL}/logout`)
+      route.push('/login')
+      console.log(data)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
     <Provider value={{
-      authState, setAuthState: (authInfo: any) => setAuthInfo(authInfo),
-      isAuthenticated, 
+      authState, 
+      setAuthState,
       logout,
       isAdmin}}>
       {children}

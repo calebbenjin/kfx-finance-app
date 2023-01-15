@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import cn from 'classnames';
@@ -11,6 +11,7 @@ import {
   faDoorOpen
 } from '@fortawesome/free-solid-svg-icons';
 import Logo from './common/Logo';
+import { AuthContext } from '@/context/AuthContext';
 
 
 const navItems = [
@@ -18,31 +19,31 @@ const navItems = [
     label: 'Account',
     path: '/dashboard',
     icon: faChartLine,
-    allowedRoles: ['user', 'admin']
+    role: 'user'
   },
-  {
-    label: 'T-History',
-    path: '/dashboard/history',
-    icon: faChartPie,
-    allowedRoles: ['admin']
-  },
+  // {
+  //   label: 'T-History',
+  //   path: '/dashboard/history',
+  //   icon: faChartPie,
+  //   allowedRoles: ['admin']
+  // },
   {
     label: 'Support',
     path: '/dashboard/support',
     icon: faAddressCard,
-    allowedRoles: ['user', 'admin']
+    role: 'user'
   },
   {
     label: 'Settings',
     path: '/dashboard/settings',
     icon: faCogs,
-    allowedRoles: ['user', 'admin']
+    role: 'user'
   },
   {
     label: 'Users',
-    path: '/dashboard/users',
+    path: '/dashboard/admin',
     icon: faDoorOpen,
-    allowedRoles: ['admin']
+    role: 'admin'
   }
 ];
 
@@ -62,6 +63,7 @@ type NavItemContainerProp = {
 }
 
 function NavItem({ navItem }: NavProps) {
+  const { isAdmin } = useContext(AuthContext)
   const router = useRouter();
   const isActive = router.asPath === navItem.path;
 
@@ -102,7 +104,7 @@ const Sidebar = () => {
             <NavItemContainer key={i}>
               <NavItem navItem={navItem} />
             </NavItemContainer>
-            {/* {navItem.allowedRoles.includes(role) && 
+            {/* {navItem.role.includes('admin') && 
             <NavItemContainer key={i}>
               <NavItem navItem={navItem} />
             </NavItemContainer>} */}
