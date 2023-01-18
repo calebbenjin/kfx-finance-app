@@ -1,6 +1,18 @@
 /** @type {import('next').NextConfig} */
 
-const nextConfig = {
+const runtimeCaching = require("next-pwa/cache");
+const withPWA = require("next-pwa")({
+    dest: "public",
+    // register: true,
+    // skipWaiting: true,
+    // runtimeCaching,
+    // buildExcludes: [/middleware-manifest.json$/],
+    // disable: process.env.NODE_ENV === 'development'
+});
+
+
+
+const nextConfig = withPWA({
   reactStrictMode: true,
   compiler: {
     styledComponents: true
@@ -10,6 +22,6 @@ const nextConfig = {
     NEXT_APP_API_URL: 'http://localhost:3000/api',
     REACT_APP_CURRENCY_API: 'https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies'
   }
-}
+});
 
-module.exports = nextConfig
+module.exports = nextConfig;
