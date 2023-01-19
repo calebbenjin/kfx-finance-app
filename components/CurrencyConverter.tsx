@@ -63,10 +63,7 @@ const CurrencyConverter = () => {
   }
 
   const checkStatusSchema = Yup.object().shape({
-    referenceNum: Yup.string().required('referenceNum is required'),
-    email: Yup.string()
-      .email('Invalid email')
-      .required('Email is required')
+    referenceNum: Yup.string().required('referenceNum is required')
   });
 
   const handleCheckPaymentStatus = async (credentials: any) => {
@@ -150,14 +147,6 @@ const CurrencyConverter = () => {
                   name="remember"
                   value="true"
                 />
-                <div className="input-control">
-                  <label htmlFor="email" className="text-gray-500">Email</label>
-                  <FormInput ariaLabel="email"
-                    name="email"
-                    type="email"
-                    placeholder="Email address"
-                  />
-                </div>
                 <div className="input-control">
                   <label htmlFor="referenceNum" className="text-gray-500">Reference Number</label>
                   <FormInput ariaLabel="referenceNum"
