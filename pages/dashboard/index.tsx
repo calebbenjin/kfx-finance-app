@@ -39,7 +39,7 @@ const DashboardPage = () => {
             <DashboardMetric
               title={authState.accType ? authState.accType : "Premier Savings"}
               acctNumber={authState.acctNum ? authState.acctNum : '9876644687'}
-              value={authState.recieveAmount ? formatCurrency(authState?.recieveAmount) : "0.00"}
+              value={authState.amount ? formatCurrency(authState?.amount) : "0.00"}
               icon={faChartArea}
               status={authState.acctStatus ? authState.acctStatus : "Regular"}
             />
