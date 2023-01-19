@@ -1,7 +1,5 @@
 import React, {
-  useState,
-  useContext,
-  useEffect
+  useContext
 } from 'react';
 import {
   faChartArea
@@ -16,7 +14,6 @@ import Card from '@/components/common/Card'
 import { useRouter } from 'next/router';
 import { AuthContext } from '@/context/AuthContext';
 import { Button } from '@/components/Button';
-import { type } from 'os';
 import { parseCookies } from '@/config/parseCookies';
 
 
