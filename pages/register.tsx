@@ -54,7 +54,7 @@ const RegisterPage = () => {
   return (
     <Layout>
       <Section>
-        <div className="flex items-center justify-center mx-auto sm:w-3/6">
+        <div className="flex items-center justify-center mx-auto sm:pt-10 py-20 sm:w-3/6">
           <div className="container w-full sm:w-500 mx-auto pt-10">
             <div className="flex justify-center items-center pb-6">
               <Logo isBage />
