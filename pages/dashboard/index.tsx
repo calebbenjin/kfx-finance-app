@@ -1,5 +1,7 @@
 import React, {
-  useContext
+  useContext,
+  useEffect,
+  useState
 } from 'react';
 import {
   faChartArea,
@@ -19,12 +21,20 @@ import { useRouter } from 'next/router';
 import { AuthContext } from '@/context/AuthContext';
 import { Button } from '@/components/Button';
 import { parseCookies } from '@/config/parseCookies';
+import Loading from '@/components/common/Loading';
 
 
 
 const DashboardPage = () => {
   const { authState } = useContext(AuthContext)
+  const [isLoading, setIsLoading] = useState(true)
   const router = useRouter()
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 3000)
+  })
 
   
   const handlePayment = () => {
@@ -32,6 +42,8 @@ const DashboardPage = () => {
   }
 
   return (
+    <>
+    {isLoading && <Loading />}
     <DashboardLayout>
       {authState ? 
       <div className="container dashboardHero bg-blue mt-10 pt-10 pb-10">
@@ -77,6 +89,7 @@ const DashboardPage = () => {
         </div>
       </div>
     </DashboardLayout>
+    </>
   )
 }
 
