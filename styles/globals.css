@@ -77,11 +77,42 @@ table {
 
 .core-btn {
   border-radius: 6px;
-  color: #fff;
   white-space: nowrap;
 }
 
 .core-rounded-btn {
   border-radius: 33px;
   white-space: nowrap;
+}
+
+.fixedNav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.dashboardHero {
+  height: 28vh;
+  position: relative;
+}
+
+.heroMetrics {
+  position: absolute;
+  bottom: -3rem;
+  right: 0;
+  left: 0;
+  max-width: 60%;
+  min-width: 90%;
+  background-image: url('/chart.png');
+  background-position: bottom;
+  /* background-size: contain; */
+  background-size: 400px 80px;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 1024px) {
+  .heroMetrics {
+    background: #fff;
+  }
 }

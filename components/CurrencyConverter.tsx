@@ -167,7 +167,7 @@ const CurrencyConverter = () => {
 }
 
 const ConverterWrapper = styled.div`
-  width: 50%;
+  width: 40%;
   margin: 0 auto;
   background: #fff;
   border-radius: 10px;

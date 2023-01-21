@@ -1,5 +1,6 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Image from 'next/image';
+import React, { useState } from 'react';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 
 
 type MetricProps = {
@@ -10,20 +11,29 @@ type MetricProps = {
   status?: string 
 }
 
-const DashboardMetric = ({ title, acctNumber, status, value, icon }: MetricProps) => {
+const DashboardMetric = ({ acctNumber, value }: MetricProps) => {
+  const [ hideBalance, setHideBalance] = useState(false)
+
+  const handleHideBalance = () => {
+    setHideBalance(!hideBalance)
+  }
+
   return (
-    <div className="bg-light-blue text-center rounded-lg shadow-lg p-6 border-t-4 border-blue">
-      <p className="text-gray-600 uppercase text-md md:text-lg font-bold">
-        {title}
-      </p>
-      <p className="text-gray-600 uppercase text-md md:text-lg font-semibold">
-        <FontAwesomeIcon icon={icon} className="mr-2" />
-        {acctNumber}
-      </p>
-      <p className="text-2xl sm:text-4xl text-blue-600 font-bold my-6">{value}</p>
-      <p className="text-gray-600 uppercase text-sm md:text-md">
-        Account Status: <span className="font-semibold">{status}</span>
-      </p>
+    <div className="bg-white mx-auto heroMetrics text-left rounded-lg shadow-lg p-6 border-t-4 border-blue">
+      <div>
+        <div className="flex items-center justify-between w-full">
+          <p className="text-gray-600 capitalize text-sm md:text-lg font-semibold">
+            Avaiable Balance
+          </p>
+          <p className="text-gray-600 capitalize text-sm md:text-lg font-semibold">
+            {acctNumber}
+          </p>
+        </div>
+        <div className="flex items-center justify-between w-full pt-2">
+          <p className="text-4xl sm:text-4xl text-blue-600 font-bold my-2">{hideBalance ? acctNumber : value}</p>
+          <button className="text-4xl" onClick={handleHideBalance}>{hideBalance ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}</button>
+        </div>
+      </div>
     </div>
   );
 };

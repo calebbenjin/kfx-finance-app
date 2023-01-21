@@ -41,7 +41,7 @@ const AvatarDropdown = () => {
           width={50} height={50}
         />
         <div className="px-3">
-          <p className="text-white">{authState?.firstName}</p>
+          {/* <p className="text-white">{authState?.firstName}</p> */}
         </div>
         <div className="mr-1 text-white">
           <FontAwesomeIcon icon={faCaretDown} />

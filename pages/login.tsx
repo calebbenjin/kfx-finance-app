@@ -55,11 +55,11 @@ const LoginPage = () => {
     <Layout>
       <Section>
         <div className="flex items-center justify-center mx-auto sm:w-3/6">
-          <div className="container w-full sm:w-500 mx-auto sm:pt-10 pt-40">
-            <div className="flex justify-center items-center pb-6">
+          <div className="container w-full sm:w-500 mx-auto sm:pt-10">
+            {/* <div className="flex justify-center items-center pb-6">
               <Logo isBage />
-            </div>
-            <h2 className='font-bold text-xl sm:text-3xl text-center my-4'>Log in to your account</h2>
+            </div> */}
+            <h2 className='font-bold text-xl sm:text-3xl text-center text-white my-4'>Log in to your account</h2>
             <p className='font-semibold text-md text-center text-gray-400 my-2'>Enter Login credentials</p>
             <Formik
               initialValues={{
@@ -107,9 +107,9 @@ const LoginPage = () => {
                   <div className="text-center">
                     <Button
                       type="submit"
-                      className="core-btn w-full text-lg shadow-2xl mt-4 bg-gradient text-gray-100 py-2 px-6 md:inline-block text-gray-50"
+                      className="core-btn w-3/6 font-bold text-lg shadow-2xl mt-6 bg-gradient text-gray-100 py-3 px-6 md:inline-block text-gray-50"
                       loading={loginLoading} loadingText='Logging In...'>Log In</Button>
-                    <p className="mt-2 xl:mt-8">Don't have an account? <Link href="/register" className='text-blue font-semibold' >Create account</Link></p>
+                    <p className="mt-4 xl:mt-8  text-white">Don't have an account? <Link href="/register" className='font-semibold text-blue' >Create account</Link></p>
                   </div>
                 </Form>
               )}
@@ -125,8 +125,9 @@ const Section = styled.section`
   height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: row;
-  background-image: url(./herobg.png);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.892), rgba(0, 0, 0, 0.831)), url(./img4.jpg);
   background-position: center;
   background-size: cover;
 

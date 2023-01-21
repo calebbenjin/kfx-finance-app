@@ -79,7 +79,7 @@ function NavItem({ navItem }: NavProps) {
     >
       <div className="flex items-center flex-col">
         <div className="mr-0 sm:mr-4">
-          <FontAwesomeIcon className="text-2xl" icon={navItem.icon} />
+          <FontAwesomeIcon className="text-3xl" icon={navItem.icon} />
         </div>
         <span className="sm:block text-sm">
           {navItem.label}
@@ -109,7 +109,7 @@ const MobileNavbar = () => {
 
 const NavWrapper = styled.nav`
   width: 100%;
-  height: 10vh;
+  height: 15vh;
   position: fixed;
   bottom: 0;
 `
