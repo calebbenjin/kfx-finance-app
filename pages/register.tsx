@@ -123,7 +123,7 @@ const RegisterPage = () => {
                       type='submit'
                       loadingText='Creating account....'
                       loading={loginLoading}
-                      className='core-btn sm:w-3/6 text-lg shadow-2xl mt-4 bg-gradient text-gray-100 py-3 px-6 md:inline-block text-gray-50'>
+                      className='core-btn w-full sm:w-3/6 text-lg shadow-2xl mt-4 bg-gradient text-gray-100 py-3 px-6 md:inline-block text-gray-50'>
                       Create account
                     </Button>
                     <p className='mt-4 sm:mt-8 text-white'>

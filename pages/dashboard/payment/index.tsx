@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import DashboardLayout from '@/components/DashboardLayout'
 import PageTitle from '@/components/common/PageTitle'
 import styled from 'styled-components'
@@ -11,6 +11,7 @@ import FormSuccess from '@/components/FormSuccess'
 import FormError from '@/components/FormError'
 import Label from '@/components/common/Label'
 import FormInput from '@/components/FormInput'
+import Loading from '@/components/common/Loading'
 
 
 const SignupSchema = Yup.object().shape({
@@ -29,17 +30,29 @@ const PaymentPage = () => {
   const [signupError, setSignupError] = useState<any>();
   const [loginLoading, setLoginLoading] = useState<any>(false);
   const [formData, setFormData] = useState()
+  const [isLoading, setIsLoading] = useState(true)
 
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 3000)
+  })
 
   const submitCredentials = (credentials: any) => {
-    setIsOpen(true)
     setFormData(credentials)
+
+    setTimeout(() => {
+      setIsOpen(true)
+    },2000)
   };
 
   return (
+    <>
+    {isLoading && <Loading />}
     <DashboardLayout>
       <PreviewTransferDetails data={formData} isOpen={isOpen} isClose={() => setIsOpen(false)} />
-      <div className="container pb-20">
+      <div className="container py-20">
         <PaymentForm>
           <PageTitle title="Send To Beneficiary" />
           <Formik
@@ -125,7 +138,7 @@ const PaymentPage = () => {
 
                   <div className="mt-6 text-center">
                     <Button
-                      type="submit" loadingText='Creating account....' loading={loginLoading}
+                      type="submit" loadingText='Verifying....' loading={loginLoading}
                       className="core-btn w-full text-lg shadow-2xl mt-4 bg-gradient text-gray-100 py-2 px-6 md:inline-block text-gray-50">PROCEED</Button>
                   </div>
                 </Form>
@@ -134,6 +147,7 @@ const PaymentPage = () => {
         </PaymentForm>
       </div>
     </DashboardLayout>
+    </>
   )
 }
 

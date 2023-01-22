@@ -12,7 +12,7 @@ type MetricProps = {
 }
 
 const DashboardMetric = ({ acctNumber, value }: MetricProps) => {
-  const [ hideBalance, setHideBalance] = useState(false)
+  const [ hideBalance, setHideBalance] = useState(true)
 
   const handleHideBalance = () => {
     setHideBalance(!hideBalance)
@@ -30,8 +30,8 @@ const DashboardMetric = ({ acctNumber, value }: MetricProps) => {
           </p>
         </div>
         <div className="flex items-center justify-between w-full pt-2">
-          <p className="text-4xl sm:text-4xl text-blue-600 font-bold my-2">{hideBalance ? acctNumber : value}</p>
-          <button className="text-4xl" onClick={handleHideBalance}>{hideBalance ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}</button>
+          <p className="text-3xl dark:text-gray-900 sm:text-4xl text-blue-600 font-semibold my-2">{hideBalance ? value : acctNumber}</p>
+          <button className="text-4xl" onClick={handleHideBalance}>{!hideBalance ? <AiOutlineEye />  : <AiOutlineEyeInvisible />}</button>
         </div>
       </div>
     </div>

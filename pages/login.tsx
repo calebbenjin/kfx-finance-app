@@ -107,7 +107,7 @@ const LoginPage = () => {
                   <div className="text-center">
                     <Button
                       type="submit"
-                      className="core-btn w-3/6 font-bold text-lg shadow-2xl mt-6 bg-gradient text-gray-100 py-3 px-6 md:inline-block text-gray-50"
+                      className="core-btn w-full sm:w-3/6 font-bold text-lg shadow-2xl mt-6 bg-gradient text-gray-100 py-3 px-6 md:inline-block text-gray-50"
                       loading={loginLoading} loadingText='Logging In...'>Log In</Button>
                     <p className="mt-4 xl:mt-8  text-white">Don't have an account? <Link href="/register" className='font-semibold text-blue' >Create account</Link></p>
                   </div>
