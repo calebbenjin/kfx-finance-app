@@ -89,21 +89,22 @@ const CurrencyConverter = () => {
   return (
     <ConverterWrapper className="shadow-2xl">
       <TrackingModal isOpen={isOpen} data={trackingData} isClose={() => setIsOpen(false)} />
-      <div className="cardHeader flex align-center justify-between">
-        <button onClick={handleConverter} className={`${isShow ? 'bg-white p-4' : ' p-4 bg-light-blue text-blue'} w-full md:text-lg text-sm font-semibold`}>Currency Converter</button>
-        <button onClick={handleTrack} className={`p-4 hover:bg-light-blue ${!isShow ? 'bg-white' : 'bg-light-blue text-blue'} transition-all w-full text-lg font-semibold md:text-lg text-sm`}>Track your Money</button>
+      <div className="cardHeader flex align-center">
+        <button onClick={handleConverter} className={`${isShow ? 'bg-white p-4' : ' p-4 bg-light-blue text-blue'} dark:text-gray-800 w-full text-blue md:text-lg text-sm font-bold`}>Currency Converter</button>
+        
+        <button onClick={handleTrack} className={`p-4 hover:bg-light-blue ${!isShow ? 'bg-grey-100 text-blue' : ' text-blue bg-light-blue'} transition-all w-full text-lg font-bold md:text-lg text-sm`}>Track your Money</button>
       </div>
 
       {isShow ? 
-      <ConverterCard className="converter-card pb-10 transition-all">
-        <div className="card-header text-center p-10">
-          <p className="pb-2 text-gray-500">Amount</p>
-          {input ? <h1 className="md:text-3xl text-3xl font-semibold">{input+" "+from+" = "+output.toFixed(2) + " " + to}</h1> : <h1 className="md:text-4xl text-3xl font-bold">0.00</h1>}
+      <ConverterCard className="converter-card pb-2 sm:pb-10 transition-all">
+        <div className="card-header text-center p-4 sm:p-10">
+          <p className="sm:pb-2 text-gray-500 dark:text-gray-800">Amount</p>
+          {input ? <h1 className="sm:text-3xl text-lg dark:text-gray-800 font-semibold">{input+" "+from+" = "+output.toFixed(2) + " " + to}</h1> : <h1 className="md:text-4xl dark:text-gray-800 text-3xl font-bold">0.00</h1>}
         </div>
         <div className="card-body text-left">
           <div className="input-control">
             <label htmlFor="amount" className="text-gray-500">Amount</label>
-            <input type="text" placeholder='Amount' onChange={(e) => setInput(e.target.value)} />
+            <input type="text" placeholder='Amount' onChange={(e) => setInput(e.target.value)} className="appearance-none rounded relative dark:bg-gray-100 block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" />
           </div>
           <div className="exchange-wrapper flex items-center justify-between my-4">
             <div className="from-wrapper">
@@ -124,13 +125,13 @@ const CurrencyConverter = () => {
               </select>
             </div>
           </div>
-          <Button onClick={()=>{convert()}} className="core-btn shadow-2xl font-bold w-full mt-5 bg-gradient py-3 px-6 md:inline-block">CONVERT</Button>
+          <Button onClick={()=>{convert()}} className="core-btn shadow-2xl text-gray-100 font-bold w-full my-3 sm:mt-5 bg-gradient py-2 px-6 md:inline-block">CONVERT</Button>
         </div>
       </ConverterCard>
       :
       <TrackCard className="track-card transition-all">
         <div className="card-header text-center md:p-10 py-4">
-          <p className="pb-2 text-lg text-gray-500">Enter the required information below to see if your money is available.</p>
+          <p className="pb-2 text-sm font-semibold sm:text-lg text-gray-500">Enter the required information below to see if your money is available.</p>
         </div>
         <div className="card-body text-left">
           <Formik initialValues={{ referenceNum: '', email: ''}} onSubmit={values => handleCheckPaymentStatus(values)} validationSchema={checkStatusSchema}>
@@ -155,7 +156,7 @@ const CurrencyConverter = () => {
                     placeholder="Reference Number"
                   />
                 </div>
-                <Button type="submit" loadingText='TRACKING....' loading={loginLoading} className="core-btn bg-gradient shadow-2xl font-bold w-full mt-5 py-3 px-6 md:inline-block">TRACK YOUR MONEY</Button>
+                <Button type="submit" loadingText='TRACKING....' loading={loginLoading} className="core-btn bg-gradient shadow-2xl font-bold w-full text-white sm:mt-5 mt-2 text-sm py-3 px-6 md:inline-block">TRACK YOUR MONEY</Button>
               </Form>
             )}
           </Formik>
@@ -187,17 +188,10 @@ const ConverterCard = styled.div`
   width: 70%;
   margin: 0 auto;
 
-  input {
-    width: 100%;
-    border: solid 1px #ccc;
-    padding: 10px 13px;
-    border-radius: 4px;
-  }
-
   select {
     display: block;
     border: solid 1px #ccc;
-    padding: 4px;
+    padding: 6px;
     border-radius: 4px;
   }
 
@@ -209,15 +203,10 @@ const ConverterCard = styled.div`
 const TrackCard = styled.div`
   width: 70%;
   margin: 0 auto;
-  padding-bottom: 3rem;
+  padding-bottom: 2rem;
+
   .input-control {
     margin-bottom: 1rem;
-  }
-  input {
-    width: 100%;
-    border: solid 1px #ccc;
-    padding: 13px;
-    border-radius: 4px;
   }
 
   select {
