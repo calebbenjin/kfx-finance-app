@@ -12,8 +12,8 @@ const HeroSection = () => {
           <h1 className="text-2xl text-white sm:text-5xl font-bold animate__bounceIn capitalize mb-4">Fast, flexible and secure international money transfers across the world.</h1>
           <p className="hidden sm:block mt-7 mb-10 text-md sm:text-2xl md:pr-20 text-gray-100">Save time and money when you send money internationally with us.</p>
           <div className="hero-btns mt-10 flex items-center justify-between">
-            <LinkButton href="/login" className="core-btn shadow-2xl bg-gradient text-gray-100 font-bold py-2 px-4 md:py-4 md:px-7 mr-2">Create Account</LinkButton>
-            <LinkButton href="/" className="core-btn shadow-2xl bg-gradient font-bold text-gray-100 py-2 px-4 md:py-4 md:px-7 flex items-center"> <IoLogoGooglePlaystore className="playstore-icon" /> Download App</LinkButton>
+            <LinkButton href="/login" className="core-btn shadow-2xl text-lg bg-gradient text-gray-100 font-bold py-2 px-4 md:py-4 md:px-7 mr-2">Register</LinkButton>
+            <LinkButton href="/" className="core-btn shadow-2xl text-lg bg-gradient font-bold text-gray-100 py-2 px-4 md:py-4 md:px-7 flex items-center"> <IoLogoGooglePlaystore className="playstore-icon" /> Download App</LinkButton>
           </div>
         </div>
         <CurrencyConverter />
