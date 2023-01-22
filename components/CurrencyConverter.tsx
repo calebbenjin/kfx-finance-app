@@ -90,7 +90,7 @@ const CurrencyConverter = () => {
     <ConverterWrapper className="shadow-2xl">
       <TrackingModal isOpen={isOpen} data={trackingData} isClose={() => setIsOpen(false)} />
       <div className="cardHeader flex align-center">
-        <button onClick={handleConverter} className={`${isShow ? 'bg-white p-4' : ' p-4 bg-light-blue text-blue'} dark:text-gray-800 w-full text-blue md:text-lg text-sm font-bold`}>Currency Converter</button>
+        <button onClick={handleConverter} className={`${isShow ? 'bg-white p-4 text-blue text-nowrap' : 'text-nowrap p-4 bg-light-blue text-blue'} dark:text-gray-800 w-full text-blue md:text-lg text-sm font-bold`}>Currency Converter</button>
         
         <button onClick={handleTrack} className={`p-4 hover:bg-light-blue ${!isShow ? 'bg-grey-100 text-blue' : ' text-blue bg-light-blue'} transition-all w-full text-lg font-bold md:text-lg text-sm`}>Track your Money</button>
       </div>
@@ -99,7 +99,7 @@ const CurrencyConverter = () => {
       <ConverterCard className="converter-card pb-2 sm:pb-10 transition-all">
         <div className="card-header text-center p-4 sm:p-10">
           <p className="sm:pb-2 text-gray-500 dark:text-gray-800">Amount</p>
-          {input ? <h1 className="sm:text-3xl text-lg dark:text-gray-800 font-semibold">{input+" "+from+" = "+output.toFixed(2) + " " + to}</h1> : <h1 className="md:text-4xl dark:text-gray-800 text-3xl font-bold">0.00</h1>}
+          {input ? <h1 className="sm:text-3xl text-lg dark:text-gray-800 font-semibold">{input+" "+from+" = "+output.toFixed(2) + " " + to}</h1> : <h1 className="md:text-4xl dark:text-gray-800 text-2xl font-bold">0.00</h1>}
         </div>
         <div className="card-body text-left">
           <div className="input-control">
