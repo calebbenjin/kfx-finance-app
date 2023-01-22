@@ -109,7 +109,7 @@ const CurrencyConverter = () => {
           <div className="exchange-wrapper flex items-center justify-between my-4">
             <div className="from-wrapper">
               <label htmlFor="from">From</label>
-              <select id="countries" value={from} onChange={(e) => { setFrom(e.target.value) }} className="bg-gray-50 border uppercase border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <select id="countries" value={from} onChange={(e) => { setFrom(e.target.value) }} className="bg-gray-50 border uppercase border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
               {options.map((country: string) => (
                   <option value={country} className="uppercase">{country}</option>
                 ))}
@@ -118,7 +118,7 @@ const CurrencyConverter = () => {
             <FaExchangeAlt className="sm:h-6 sm:w-6"  onClick={() => { flip()}} />
             <div className="to-wrapper">
               <label htmlFor="to">To</label>
-              <select  id="countries" value={to} onChange={(e) => {setTo(e.target.value)}} className="bg-gray-50 uppercase border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <select  id="countries" value={to} onChange={(e) => {setTo(e.target.value)}} className="bg-gray-50 uppercase border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 {options.map((country: string) => (
                   <option value={country} className="uppercase">{country}</option>
                 ))}
