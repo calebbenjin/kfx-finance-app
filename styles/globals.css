@@ -110,8 +110,8 @@ table {
   left: 0;
   max-width: 60%;
   min-width: 90%;
-  background-image: url('/chart.png');
-  background-position: bottom;
+  /* background-image: url('/chart.png');
+  background-position: bottom; */
   /* background-size: contain; */
   background-size: 400px 80px;
   background-repeat: no-repeat;

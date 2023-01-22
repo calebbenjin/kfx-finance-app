@@ -28,7 +28,7 @@ const TrackMoneySection = () => {
 }
 
 const Section = styled.section`
-  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)), url(./img3.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)), url(./img3.jpeg);
   background-position: center;
   background-size: cover;
 

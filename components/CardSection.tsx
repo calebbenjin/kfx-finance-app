@@ -40,7 +40,7 @@ const CardWrapper = styled.section`
   }
 
   .cardBg {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.674)), url(./img4.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.674)), url(./img4.jpeg);
     background-position: center;
     background-size: cover;
   }

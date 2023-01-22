@@ -151,7 +151,7 @@ const Section = styled.section`
   justify-content: center;
   flex-direction: row;
   background-image: linear-gradient(rgba(0, 0, 0, 0.892), rgba(0, 0, 0, 0.831)),
-    url(./img4.jpg);
+    url(./img4.jpeg);
   background-position: center;
   background-size: cover;
 

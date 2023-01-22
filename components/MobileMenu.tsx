@@ -51,7 +51,7 @@ export default function MobileMenu() {
           )}
         >
           <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
+            className=" text-gray-900 text-sm font-semibold"
             style={{ transitionDelay: '150ms' }}
           >
             <Link href="/" className="flex w-auto pl-4 pb-4">
@@ -59,7 +59,7 @@ export default function MobileMenu() {
             </Link>
           </li>
           <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
+            className=" text-gray-900 text-sm font-semibold"
             style={{ transitionDelay: '250ms' }}
           >
             <Link href="#blog" className="flex w-auto pl-4 pb-4">
@@ -67,7 +67,7 @@ export default function MobileMenu() {
             </Link>
           </li>
           <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
+            className="text-gray-900 text-sm font-semibold"
             style={{ transitionDelay: '275ms' }}
           >
             <Link href="#about" className="flex w-auto pl-4 pb-4">
@@ -75,7 +75,7 @@ export default function MobileMenu() {
             </Link>
           </li>
           <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
+            className="text-gray-900 text-sm font-semibold"
             style={{ transitionDelay: '325ms' }}
           >
             <Link href="/login" className="flex w-auto pl-4 pb-4">
@@ -83,10 +83,10 @@ export default function MobileMenu() {
             </Link>
           </li>
           <li
-            className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 text-sm font-semibold"
+            className="text-gray-900 text-sm font-semibold"
             style={{ transitionDelay: '325ms' }}
           >
-            <Link href="/register" className="flex justify-between items-center w-auto pl-4 pb-4 core-btn shadow-2xl ml-4 bg-blue py-3 px-6 md:inline-block">
+            <Link href="/register" className="flex justify-between text-white items-center w-auto pl-4 pb-4 core-btn shadow-2xl ml-4 bg-blue py-3 px-6 md:inline-block">
               Register <CiLogin className="text-2xl" />
             </Link>
           </li>
