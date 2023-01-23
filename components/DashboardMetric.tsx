@@ -19,7 +19,7 @@ const DashboardMetric = ({ acctNumber, value }: MetricProps) => {
   }
 
   return (
-    <div className="bg-white mx-auto heroMetrics text-left rounded-lg shadow-lg p-6 border-t-4 border-blue">
+    <div className="bg-white mx-auto heroMetrics text-left rounded-lg shadow-lg py-6 px-6  sm:px-8 border-t-4 border-blue">
       <div>
         <div className="flex items-center justify-between w-full">
           <p className="text-gray-600 capitalize text-sm md:text-lg font-semibold">

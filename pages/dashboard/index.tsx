@@ -41,12 +41,16 @@ const DashboardPage = () => {
     router.push('/dashboard/payment')
   }
 
+  const handleReceivePayment = () => {
+    router.push('/dashboard/payment/receive')
+  }
+
   return (
     <>
     {isLoading && <Loading />}
     <DashboardLayout>
       {authState ? 
-      <div className="container dashboardHero bg-blue mt-10 pt-10 pb-10">
+      <div className="container dashboardHero bg-blue pt-10 pb-10">
         <p className="capitalize text-lg text-white">{`Welcome ${authState?.firstName}`}</p>
         <div className="text-center">
           <div className="w-full mb-4 sm:mb-0">
@@ -64,10 +68,22 @@ const DashboardPage = () => {
 
 
 
-      <div className="container mt-20">
-      <Button onClick={handlePayment} className="core-btn mt-6 font-semibold mx-auto md:w-auto w-full shadow-2xl bg-gradient text-gray-100 py-3 px-6 md:py-4 md:px-7 flex items-center justify-between"><span>Proceed to receive payment</span> <IoIosSend className="playstore-icon ml-10" /> </Button>
+      <div className="container mt-16 pb-36">
+        <div className="items-center grid grid-cols-2  gap-4">
+          <Button onClick={handlePayment} className="core-btn mt-6 font-semibold mx-auto md:w-auto w-full shadow-2xl bg-gradient text-gray-100 py-3 px-3 md:py-4 sm:px-10 flex items-center justify-between"><span>Send payment</span> <IoIosSend className="playstore-icon sm:ml-2" /> </Button>
+          <Button onClick={handleReceivePayment} className="core-btn mt-6 font-semibold mx-auto md:w-auto w-full shadow-2xl bg-gradient text-gray-100 py-3 px-3 md:py-4 md:px-7 flex items-center justify-between"><span>Receive payment</span> <IoIosSend className="playstore-icon sm:ml-2" /> </Button>
+        </div>
 
-        <div className="serviceSection grid grid-cols-3 gap-y-6 gap-x-6 mt-16">
+        <div className="grid grid-cols-2 gap-4 sm:gap-6 mt-10">
+          <div className="adsCard py-10 sm:py-20 px-4 mt-6 rounded-lg">
+            <h3 className="sm:text-2xl text-gray-100 font-semibold capitalize">Save time and money when you send money internationally with us.</h3>
+          </div>
+          <div className="adsCard2 py-10 sm:py-20 px-4 mt-6 rounded-lg">
+            <h3 className="sm:text-2xl text-gray-100 font-semibold capitalize">Fast, flexible and secure international money transfers across the world.</h3>
+          </div>
+        </div>
+
+        {/* <div className="serviceSection grid grid-cols-3 gap-y-6 gap-x-6 mt-16">
           <div className="serviceCard">
             <div className="iconBox mx-auto flex items-center justify-center text-white h-16 w-16 sm:h-40 sm:w-40 rounded-full bg-blue">
               <FontAwesomeIcon className="h-7 w-7 sm:h-20 sm:w-20" icon={faSackDollar} />
@@ -86,7 +102,7 @@ const DashboardPage = () => {
             </div>
             <p className="text-center mt-2 font-semibold">Investment</p>
           </div>
-        </div>
+        </div> */}
       </div>
     </DashboardLayout>
     </>

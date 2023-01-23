@@ -9,21 +9,14 @@ import { Button } from './Button'
 type PreviewProps = {
   isOpen: boolean,
   isClose: any,
-  data: any
+  data: any, 
+  handleClick: () => void
 }
 
-const PreviewTransferDetails = ({isOpen, isClose, data}:PreviewProps) => {
-  const router = useRouter()
+const PreviewTransferDetails = ({isOpen, isClose, data, handleClick}:PreviewProps) => {
   const [isLoading, setIsLoading] = useState(false)
 
   const cancelButtonRef = useRef(null)
-
-  const handleClick = () => {
-    setIsLoading(true)
-    setTimeout(() => {
-      router.push('/dashboard/payment/task')
-    }, 2000)
-  }
 
   return (
     <Modal isOpen={isOpen} cancelButtonRef={cancelButtonRef} isClose={isClose}>

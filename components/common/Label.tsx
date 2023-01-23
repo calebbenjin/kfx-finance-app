@@ -5,7 +5,7 @@ type LabelProps = {
 }
 
 const Label = ({ text }: LabelProps) => (
-  <label className="text-sm font-semibold text-gray-200">{text}</label>
+  <label className="text-sm font-semibold text-gray-800">{text}</label>
 );
 
 export default Label;

@@ -89,7 +89,6 @@ table {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1;
 }
 
 .dashboardHero {
@@ -103,6 +102,17 @@ table {
   background-size: cover;
 }
 
+.adsCard {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url('/bgadmin.jpeg');
+  background-position: center;
+  background-size: cover;
+}
+.adsCard2 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url('/img6.jpeg');
+  background-position: center;
+  background-size: cover;
+}
+
 .heroMetrics {
   position: absolute;
   bottom: -3rem;
@@ -110,9 +120,6 @@ table {
   left: 0;
   max-width: 60%;
   min-width: 90%;
-  /* background-image: url('/chart.png');
-  background-position: bottom; */
-  /* background-size: contain; */
   background-size: 400px 80px;
   background-repeat: no-repeat;
 }
