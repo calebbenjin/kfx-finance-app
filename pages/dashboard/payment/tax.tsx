@@ -22,7 +22,7 @@ const SignupSchema = Yup.object().shape({
   )
 });
 
-const TaskPage = () => {
+const TaxPage = () => {
   const { authState } = useContext(AuthContext)
   const [supportModal, setSupportModal] = useState(false)
   const router = useRouter()
@@ -65,8 +65,8 @@ const TaskPage = () => {
                     <MegaphoneIcon className="h-6 w-6 text-white" aria-hidden="true" />
                   </span>
                   <p className="ml-3 truncate font-medium text-white">
-                    <span className="md:hidden">Don&lsquo;t have a task code?</span>
-                    <span className="hidden md:inline">Don&lsquo;t have a task code?</span>
+                    <span className="md:hidden">Don&lsquo;t have a TAX code?</span>
+                    <span className="hidden md:inline">Don&lsquo;t have a TAX code?</span>
                   </p>
                 </div>
                 <div className="order-3 mt-2 w-full flex-shrink-0 sm:order-2 sm:mt-0 sm:w-auto">
@@ -74,7 +74,7 @@ const TaskPage = () => {
                     onClick={handleSupport}
                     className="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-2 text-sm font-medium text-indigo-600 shadow-sm hover:bg-indigo-50"
                   >
-                    Request for task code!
+                    Request for TAX code!
                   </button>
                 </div>
                 <div className="order-2 flex-shrink-0 sm:order-3 sm:ml-3">
@@ -114,11 +114,11 @@ const TaskPage = () => {
                   <div>
                     <div>
                       <div className="mb-1">
-                        <Label text="Task Code" />
+                        <Label text="Tax Code" />
                       </div>
                       <FormInput
-                        ariaLabel="TaskCode"
-                        name="taskCode" placeholder="Enter Task Code"
+                        ariaLabel="TaxCode"
+                        name="taskCode" placeholder="Enter TAX Code"
                         type="text"
                       />
                     </div>
@@ -168,4 +168,4 @@ export async function getServerSideProps({ req }: any) {
   };
 }
 
-export default TaskPage
+export default TaxPage

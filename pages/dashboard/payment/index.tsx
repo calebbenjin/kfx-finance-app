@@ -12,6 +12,7 @@ import FormError from '@/components/FormError'
 import Label from '@/components/common/Label'
 import FormInput from '@/components/FormInput'
 import Loading from '@/components/common/Loading'
+import Router, { useRouter } from 'next/router'
 
 
 const SignupSchema = Yup.object().shape({
@@ -25,6 +26,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const PaymentPage = () => {
+  const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
   const [signupSuccess, setSignupSuccess] = useState<any>();
   const [signupError, setSignupError] = useState<any>();
@@ -47,11 +49,19 @@ const PaymentPage = () => {
     },2000)
   };
 
+  const handlePayment = () => {
+    setIsLoading(true)
+    setIsOpen(false)
+    setTimeout(() => {
+      router.push('/dashboard/payment/tax')
+    }, 2000)
+  }
+
   return (
     <>
     {isLoading && <Loading />}
     <DashboardLayout>
-      <PreviewTransferDetails data={formData} isOpen={isOpen} isClose={() => setIsOpen(false)} />
+      <PreviewTransferDetails handleClick={handlePayment} data={formData} isOpen={isOpen} isClose={() => setIsOpen(false)} />
       <div className="container py-20">
         <PaymentForm>
           <PageTitle title="Send To Beneficiary" />
