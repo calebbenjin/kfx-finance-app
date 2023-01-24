@@ -26,6 +26,7 @@ const SignupSchema = Yup.object().shape({
   amount: Yup.string(),
   sendCurrency: Yup.string(),
   recieveCurrency: Yup.string(),
+  currency: Yup.string(),
   pickupDate: Yup.string(),
 });
 
@@ -94,7 +95,7 @@ const EditUserPage = ({userID}: userProps) => {
             <p>{user?.voulcherNum}</p>
           </div>
           <div className="card mb-4">
-            <p className="text-sm font-semibold text-gray-400">Balance</p>
+            <p className="text-sm font-semibold text-gray-400">Account Balance</p>
             <p>{user?.amount && formatCurrency(Number(user?.amount))}</p>
           </div>
           <div className="card mb-4">
@@ -122,8 +123,8 @@ const EditUserPage = ({userID}: userProps) => {
             <p>{user?.sendCurrency}</p>
           </div>
           <div className="card mb-4">
-            <p className="text-sm font-semibold text-gray-400">Transaction Date</p>
-            <p>{user?.transactionDate}</p>
+            <p className="text-sm font-semibold text-gray-400">Account Currency</p>
+            <p>{user?.currency}</p>
           </div>
           <div className="card mb-4">
             <p className="text-sm font-semibold text-gray-400">Pickup Date</p>
@@ -145,6 +146,7 @@ const EditUserPage = ({userID}: userProps) => {
               amount: "",
               isPaid: "",
               sendCurrency: "",
+              currency: "",
               recieveCurrency: "",
               pickupDate: ""
             }}
@@ -181,6 +183,36 @@ const EditUserPage = ({userID}: userProps) => {
                   <div className="flex sm:flex-row flex-col">
                     <div className="mb-2 sm:mr-2 sm:w-1/2">
                       <div className="mb-1">
+                        <Label text="Account Balance" />
+                      </div>
+                      <FormInput
+                        ariaLabel="Amount"
+                        name="amount"
+                        type="text"
+                        placeholder="Amount"
+                      />
+                    </div>
+                    <div className="mb-2 sm:ml-2 sm:w-1/2">
+                      <div className="mb-1">
+                        <Label text="Account Currency" />
+                      </div>
+                      <FormInput isSelect name='currency'>
+                        <option value='USD'>USD</option>
+                        <option value='EURO'>EURO</option>
+                        <option value='POUNDS'>POUNDS</option>
+                        <option value='ZAR'>ZAR</option>
+                        <option value='NGN'>NGN</option>
+                        <option value='PULA'>Pula</option>
+                        <option value='NAD'>NAD</option>
+                        <option value='ZMW'>ZMW</option>
+                        <option value='SZL'>SZL</option>
+                        <option value='LSL'>LSL</option>
+                      </FormInput>
+                    </div>
+                  </div>
+                  <div className="flex sm:flex-row flex-col">
+                    <div className="mb-2 sm:mr-2 sm:w-1/2">
+                      <div className="mb-1">
                         <Label text="Recieve Amount" />
                       </div>
                       <FormInput
@@ -190,19 +222,6 @@ const EditUserPage = ({userID}: userProps) => {
                         placeholder="Recieve Amount"
                       />
                     </div>
-                    <div className="mb-2 sm:ml-2 sm:w-1/2">
-                      <div className="mb-1">
-                        <Label text="Amount" />
-                      </div>
-                      <FormInput
-                        ariaLabel="Amount"
-                        name="amount"
-                        type="text"
-                        placeholder="Amount"
-                      />
-                    </div>
-                  </div>
-                  <div className="flex sm:flex-row flex-col">
                     <div className="mb-2 sm:mr-2 sm:w-1/2">
                       <div className="mb-1">
                         <Label text="Recieve Method" />
@@ -229,27 +248,40 @@ const EditUserPage = ({userID}: userProps) => {
 
                   <div className="flex sm:flex-row flex-col">
                     <div className="mb-2 sm:mr-2 sm:w-1/2">
-                      <div className="mb-1">
-                        <Label text="Send Currency" />
+                      <div className='mb-1'>
+                        <Label text='Send Currency' />
                       </div>
-                      <FormInput
-                        ariaLabel="Send Currency"
-                        name="sendCurrency"
-                        type="text"
-                        placeholder="Send Currency"
-                      />
+                      <FormInput isSelect name='sendCurrency'>
+                        <option value='USD'>USD</option>
+                        <option value='EURO'>EURO</option>
+                        <option value='POUNDS'>POUNDS</option>
+                        <option value='ZAR'>ZAR</option>
+                        <option value='NGN'>NGN</option>
+                        <option value='PULA'>Pula</option>
+                        <option value='NAD'>NAD</option>
+                        <option value='ZMW'>ZMW</option>
+                        <option value='SZL'>SZL</option>
+                        <option value='LSL'>LSL</option>
+                      </FormInput>
                     </div>
                     <div className="mb-2 sm:ml-2 sm:w-1/2">
                       <div className="mb-1">
                         <Label text="Recieve Currency" />
                       </div>
-                      <FormInput
-                        ariaLabel="Recieve Currency"
-                        name="recieveCurrency"
-                        type="text"
-                        placeholder="Recieve Currency"
-                      />
+                      <FormInput isSelect name='recieveCurrency'>
+                        <option value='USD'>USD</option>
+                        <option value='EURO'>EURO</option>
+                        <option value='POUNDS'>POUNDS</option>
+                        <option value='ZAR'>ZAR</option>
+                        <option value='NGN'>NGN</option>
+                        <option value='PULA'>Pula</option>
+                        <option value='NAD'>NAD</option>
+                        <option value='ZMW'>ZMW</option>
+                        <option value='SZL'>SZL</option>
+                        <option value='LSL'>LSL</option>
+                      </FormInput>
                     </div>
+                    
                   </div>
                   
                   <div className='flex sm:flex-row flex-col'>

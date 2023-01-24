@@ -10,6 +10,7 @@ import { publicFetch } from '@/config/fetch';
 import FormSuccess from './FormSuccess';
 import FormError from './FormError';
 import FormInput from './FormInput';
+import LoginModal from './LoginModal';
 
 const CurrencyConverter = () => {
   const [isShow, setIsShow] = useState(false)

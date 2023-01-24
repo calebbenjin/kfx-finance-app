@@ -3,6 +3,7 @@ import { Dialog } from '@headlessui/react'
 import Modal from './Modal'
 import { BsCheck2Circle } from 'react-icons/bs'
 import { dateFormater, formatCurrency } from '../util'
+import LoginModal from './LoginModal'
 
 
 type PreviewProps = {
@@ -12,11 +13,17 @@ type PreviewProps = {
 }
 
 const TrackingModal = ({isOpen, isClose, data}:PreviewProps) => {
+  const [ openLoginModal, setOpenLoginModal ] = useState(false)
 
   const cancelButtonRef = useRef(null)
 
+  const handleLoginModal = () => {
+    setOpenLoginModal(true)
+  }
+
   return (
     <Modal isOpen={isOpen} cancelButtonRef={cancelButtonRef} isClose={isClose}>
+      <LoginModal isOpen={openLoginModal} isClose={() => setOpenLoginModal(false)} />
       {data && 
       <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
         <div className="">
@@ -42,11 +49,11 @@ const TrackingModal = ({isOpen, isClose, data}:PreviewProps) => {
                 </div>
                 <div className="list flex items-center mb-2 justify-between border-b pb-2">
                   <p className="font-bold text-gray-500 text-sm sm:text-lg">Send Amount:</p>
-                  <p className="font-semibold text-gray-500 text-sm sm:text-lg">{formatCurrency(Number(data?.sendAmount))} {data.sendCurrency}</p>
+                  <p className="font-semibold text-gray-500 text-sm sm:text-lg"><span className="text-sm font-bold">{data.sendCurrency}</span> {formatCurrency(Number(data?.sendAmount))} </p>
                 </div>
                 <div className="list flex items-center mb-2 justify-between border-b pb-2">
                   <p className="font-bold text-gray-500 text-sm sm:text-lg">Reiever Amount:</p>
-                  <p className="font-semibold text-gray-500 text-sm sm:text-lg">{formatCurrency(Number(data?.recieveAmount))} {data?.recieveCurrency}</p>
+                  <p className="font-semibold text-gray-500 text-sm sm:text-lg"><span className="text-sm font-bold">{data?.recieveCurrency}</span> {formatCurrency(Number(data?.recieveAmount))} </p>
                 </div>
                 <div className="list flex items-center mb-2 justify-between border-b pb-2">
                   <p className="font-bold text-gray-500 text-sm sm:text-lg">Recieve Method:</p>
@@ -73,7 +80,7 @@ const TrackingModal = ({isOpen, isClose, data}:PreviewProps) => {
         <button
           type="button"
           className="inline-flex w-full justify-center rounded-md border border-transparent bg-gradient px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
-          onClick={() => isClose(false)}
+          onClick={handleLoginModal}
         >
           Preceed To Recieve Payment
         </button>

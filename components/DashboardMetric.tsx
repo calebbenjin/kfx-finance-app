@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React, { useState } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 
@@ -8,10 +7,11 @@ type MetricProps = {
   value: number | undefined,
   icon: any,
   acctNumber?: string,
+  currency: string,
   status?: string 
 }
 
-const DashboardMetric = ({ acctNumber, value }: MetricProps) => {
+const DashboardMetric = ({ acctNumber, currency, value }: MetricProps) => {
   const [ hideBalance, setHideBalance] = useState(true)
 
   const handleHideBalance = () => {
@@ -30,7 +30,8 @@ const DashboardMetric = ({ acctNumber, value }: MetricProps) => {
           </p>
         </div>
         <div className="flex items-center justify-between w-full pt-2">
-          <p className="text-3xl dark:text-gray-900 sm:text-4xl text-blue-600 font-semibold my-2">{hideBalance ? value : acctNumber}</p>
+          { hideBalance ? <p className="text-3xl dark:text-gray-900 sm:text-4xl text-blue-600 my-2"><span className="text-xl font-bold">{currency}</span> {value}</p> :
+          <p className="text-3xl dark:text-gray-900 sm:text-4xl text-blue-600 font-semibold my-2">{acctNumber}</p>}
           <button className="text-4xl" onClick={handleHideBalance}>{!hideBalance ? <AiOutlineEye />  : <AiOutlineEyeInvisible />}</button>
         </div>
       </div>
