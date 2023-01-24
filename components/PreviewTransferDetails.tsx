@@ -11,7 +11,7 @@ type PreviewProps = {
   isClose: any,
   data: any, 
   handleClick: () => void,
-  isLoading: boolean
+  isLoading?: boolean
 }
 
 const PreviewTransferDetails = ({isOpen, isClose, data, isLoading, handleClick}:PreviewProps) => {
