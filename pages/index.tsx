@@ -16,8 +16,8 @@ export default function Home() {
         <HeroSection />
         <FeatureSection />
         <CardSection />
-        <TestimonieSection />
-        <LatestTractionsSection />
+        {/* <TestimonieSection /> */}
+        {/* <LatestTractionsSection /> */}
         {/* <ChooseSection /> */}
         <TrackMoneySection />
         <Footer />

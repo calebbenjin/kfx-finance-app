@@ -33,6 +33,9 @@ const CurrencyConverter = () => {
       setInfo(res.data[from]);
     })
   }, [from]);
+
+
+  console.log(info)
   
 
   // Calling the convert function whenever
@@ -46,6 +49,7 @@ const CurrencyConverter = () => {
   function convert() {
     var rate = info[to];
     setOutput(input * rate);
+    console.log(100 * rate)
   }
 
    // Function to switch between two currency
@@ -131,8 +135,8 @@ const CurrencyConverter = () => {
       </ConverterCard>
       :
       <TrackCard className="track-card transition-all">
-        <div className="card-header text-center md:p-10 py-4">
-          <p className="pb-2 text-sm font-semibold sm:text-lg text-gray-500">Enter the required information below to see if your money is available.</p>
+        <div className="card-header py-4">
+          <p className="pb-2 text-left text-sm font-semibold sm:text-lg text-gray-500">Enter the required information below to see if your money is available.</p>
         </div>
         <div className="card-body text-left">
           <Formik initialValues={{ referenceNum: '', email: ''}} onSubmit={values => handleCheckPaymentStatus(values)} validationSchema={checkStatusSchema}>

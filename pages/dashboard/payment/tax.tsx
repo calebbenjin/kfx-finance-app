@@ -34,10 +34,10 @@ const TaxPage = () => {
 
   const submitCredentials =  (credentials: any) => {
     if(credentials.taskCode === authState?.taskCode) {
-      setSignupSuccess('Awesome your task code is correct!!')
       setSignupError('')
       setLoginLoading(true)
       setTimeout(() => {
+        setSignupSuccess('Awesome your tax code is correct!!')
         router.push('/dashboard/payment/voucher')
       },2000)
     } else {

@@ -18,12 +18,12 @@ const navItems = [
     icon: faChartLine,
     allowedRoles: ['user', 'admin']
   },
-  // {
-  //   label: 'T-History',
-  //   path: '/dashboard/history',
-  //   icon: faList,
-  //   allowedRoles: ['admin']
-  // },
+  {
+    label: 'Transactions',
+    path: '/dashboard/transactions',
+    icon: faList,
+    allowedRoles: ['admin']
+  },
   // {
   //   label: 'Account',
   //   path: 'account',
@@ -36,12 +36,12 @@ const navItems = [
     icon: faHeadset,
     allowedRoles: ['user', 'admin']
   },
-  {
-    label: 'Settings',
-    path: '/dashboard/settings',
-    icon: faCogs,
-    allowedRoles: ['user', 'admin']
-  },
+  // {
+  //   label: 'Settings',
+  //   path: '/dashboard/settings',
+  //   icon: faCogs,
+  //   allowedRoles: ['user', 'admin']
+  // },
   // {
   //   label: 'Users',
   //   path: 'users',

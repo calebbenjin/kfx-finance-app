@@ -109,7 +109,7 @@ const LoginPage = () => {
                       type="submit"
                       className="core-btn w-full sm:w-3/6 font-bold text-lg shadow-2xl mt-6 bg-gradient text-gray-100 py-3 px-6 md:inline-block text-gray-50"
                       loading={loginLoading} loadingText='Logging In...'>Log In</Button>
-                    <p className="mt-4 xl:mt-8  text-white">Don't have an account? <Link href="/register" className='font-semibold text-blue' >Create account</Link></p>
+                    <p className="mt-4 xl:mt-8  text-white">Don't have an account? <Link href="/register" className='font-semibold' >Create account</Link></p>
                   </div>
                 </Form>
               )}
@@ -127,7 +127,7 @@ const Section = styled.section`
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.892), rgba(0, 0, 0, 0.831)), url(./img4.jpeg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.892), rgba(0, 0, 0, 0.266)), url(./img4.jpeg);
   background-position: center;
   background-size: cover;
 

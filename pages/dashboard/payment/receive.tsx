@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import DashboardLayout from '@/components/DashboardLayout'
 import PageTitle from '@/components/common/PageTitle'
 import styled from 'styled-components'
@@ -14,6 +14,8 @@ import FormInput from '@/components/FormInput'
 import Loading from '@/components/common/Loading'
 import { useRouter } from 'next/router'
 import OrderModal from '@/components/OrderModal'
+import NotPaidModal from '@/components/NotPaidModal'
+import { AuthContext } from '@/context/AuthContext'
 
 
 const SignupSchema = Yup.object().shape({
@@ -29,12 +31,14 @@ const SignupSchema = Yup.object().shape({
 const ReceivePage = () => {
   const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
-  const [openOrder, setOpenOrder] = useState(false)
+  const { authState } = useContext(AuthContext)
+  const [notPaidModal, setNotPaidModal] = useState(false)
   const [signupSuccess, setSignupSuccess] = useState<any>();
   const [signupError, setSignupError] = useState<any>();
   const [loginLoading, setLoginLoading] = useState<any>(false);
   const [formData, setFormData] = useState()
   const [isLoading, setIsLoading] = useState(true)
+  const [previewLoading, setPreviewLoading] = useState(false)
 
 
   useEffect(() => {
@@ -53,20 +57,25 @@ const ReceivePage = () => {
   };
 
   const handlePayment = () => {
-    setIsLoading(true)
-    setIsOpen(false)
+    setPreviewLoading(true)
+    
     setTimeout(() => {
-      setIsLoading(false)
-      setOpenOrder(true)
+      if(authState.isPaid === 'Not Paid') {
+        setNotPaidModal(true)
+        setIsOpen(false)
+      } else {
+        router.push('/dashboard/payment/tax')
+      }
     }, 2000)
   }
+  
 
   return (
     <>
     {isLoading && <Loading />}
     <DashboardLayout>
-      <OrderModal isOpen={openOrder} isClose={() => setOpenOrder(false)} />
-      <PreviewTransferDetails isLoading={isLoading} handleClick={handlePayment} data={formData} isOpen={isOpen} isClose={() => setIsOpen(false)} />
+      <NotPaidModal isOpen={notPaidModal} isClose={() => setNotPaidModal(false)} />
+      <PreviewTransferDetails isLoading={previewLoading} handleClick={handlePayment} data={formData} isOpen={isOpen} isClose={() => setIsOpen(false)} />
       <div className="container py-24 flex items-center justify-center">
         <PaymentForm>
           <h3 className="text-xl my-2 font-semibold">Send To Beneficiary</h3>

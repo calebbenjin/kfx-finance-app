@@ -2,8 +2,9 @@ import Link from 'next/link'
 import React from 'react'
 import styled from 'styled-components'
 import { SiFsecure } from 'react-icons/si'
+import playstoreImg from '../assets/playstore.png'
 import { LinkButton } from './Button'
-import { IoLogoGooglePlaystore } from 'react-icons/io5'
+import Image from 'next/image'
 
 const Footer = () => {
   return (
@@ -11,8 +12,8 @@ const Footer = () => {
       <div className="container py-20 grid grid-cols-1 md:grid-cols-2 md:gap-10 lg:grid-cols-3 lg:gap-10">
         <div className="about-content">
           <BrandLogo><SiFsecure className="logo" /> <span>Pay</span>Foreign</BrandLogo>
-          <p className="text-gray-300 mt-6">Yet bed any for travelling assistance indulgence unpleasing. Not thoughts all exercise blessing. Indulgence way everything joy alteration boisterous the attachment.</p>
-          <LinkButton href="/" className="core-rounded-btn shadow-2xl bg-blue text-gray-100 mt-4 py-3 px-6 md:py-3 md:px-7 flex items-center"> <IoLogoGooglePlaystore className="playstore-icon" /> Download App</LinkButton>
+          <p className="text-gray-200 my-6">With so many options to transfer money internationally - through bank accounts, mobile wallets, at thousands of locations and online - PayForiegn lets you find your way..</p>
+          <LinkButton href="/" className="mt-4 shadow-2xl"> <Image src={playstoreImg} alt="download on playstore" width={170} height={100} /> </LinkButton>
         </div>
         <div className="nav-link flex align-center justify-center">
           <div className="container">

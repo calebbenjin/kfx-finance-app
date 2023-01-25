@@ -7,7 +7,7 @@ import { AnimationOnScroll } from 'react-animation-on-scroll'
 const CardSection = () => {
   return (
     <AnimationOnScroll animateIn="animate__backInUp" animateOnce={false}>
-      <CardWrapper>
+      <CardWrapper className="mb-40">
         <div className="container mx-auto mt-20">
           <div className="card cardBg p-10 md:p-20 rounded-6 grid grid-cols-1 md:grid-cols-1 md:gap-10 lg:grid-cols-2 lg:gap-20">
             <Image src={BirdsImg} alt="BirdsImg" height={100} width={100} className="card-img" />
@@ -34,7 +34,6 @@ const CardSection = () => {
 }
 
 const CardWrapper = styled.section`
-  
   .card {
     position: relative;
   }

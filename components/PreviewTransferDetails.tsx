@@ -48,12 +48,12 @@ const PreviewTransferDetails = ({isOpen, isClose, data, isLoading, handleClick}:
                     <p className="font-bold text-gray-500">Bank</p>
                     <p>{data?.bankName}</p>
                   </div>
-                  <div className="list flex items-center mb-2 justify-between border-b pb-2">
+                  {/* <div className="list flex items-center mb-2 justify-between border-b pb-2">
                     <p className="font-bold text-gray-500">Transaction Charges</p>
                     <p className="text-lg"><span className="text-xs font-semibold">{data?.currency}</span> {formatCurrency(Number(data?.amount)/4)}</p>
-                  </div>
+                  </div> */}
                   <div className="list flex items-center justify-between">
-                    <p className="font-bold text-gray-500">Total to Pay</p>
+                    <p className="font-bold text-gray-500">Total</p>
                     <p className="font-bold text-gray-500">{data?.currency} {formatCurrency(Number(data?.amount))}</p>
                   </div>
                 </div>
@@ -70,7 +70,7 @@ const PreviewTransferDetails = ({isOpen, isClose, data, isLoading, handleClick}:
             className="inline-flex w-full justify-center rounded-md border border-transparent bg-gradient px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2  focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
             onClick={handleClick}
           >
-            Preceed transaction
+            Proceed transaction
           </Button>
           <button
             type="button"

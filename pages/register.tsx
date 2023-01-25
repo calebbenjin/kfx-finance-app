@@ -128,7 +128,7 @@ const RegisterPage = () => {
                     </Button>
                     <p className='mt-4 sm:mt-8 text-white'>
                       Already have an account?{' '}
-                      <Link href='/login' className='text-blue font-semibold'>
+                      <Link href='/login' className=' font-semibold'>
                         Log in now
                       </Link>
                     </p>
@@ -150,7 +150,7 @@ const Section = styled.section`
   flex-direction: row;
   justify-content: center;
   flex-direction: row;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.892), rgba(0, 0, 0, 0.831)),
+  background-image: linear-gradient(rgba(0, 0, 0, 0.892), rgba(0, 0, 0, 0.309)),
     url(./img4.jpeg);
   background-position: center;
   background-size: cover;

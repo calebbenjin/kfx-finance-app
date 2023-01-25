@@ -3,7 +3,7 @@ import Logo from './Logo';
 
 const DashboardNav = () => {
   return (
-    <nav className="flex sm:justify-end z-10 justify-between items-center p-4 bg-blue">
+    <nav className="flex sm:justify-end justify-between items-center p-4 bg-blue">
       <div className="md:hidden">
         <Logo isBage />
       </div>

@@ -14,6 +14,7 @@ import { useRouter } from 'next/router'
 import { MegaphoneIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import SupportModal from '@/components/supportModal'
 import { AuthContext } from '@/context/AuthContext'
+import SuccessModal from '@/components/SuccessModal'
 
 
 const SignupSchema = Yup.object().shape({
@@ -23,9 +24,10 @@ const SignupSchema = Yup.object().shape({
 });
 
 const VoucherPage = () => {
+  const router = useRouter()
   const { authState } = useContext(AuthContext)
   const [supportModal, setSupportModal] = useState(false)
-  const router = useRouter()
+  const [successModal, setSuccessModal] = useState(false)
   const [signupSuccess, setSignupSuccess] = useState<any>();
   const [signupError, setSignupError] = useState<any>();
   const [loginLoading, setLoginLoading] = useState<any>(false);
@@ -34,10 +36,13 @@ const VoucherPage = () => {
 
   const submitCredentials =  (credentials: any) => {
     if(credentials.voulcherNum === authState?.voulcherNum) {
-      setSignupSuccess('Awesome your Voucher Number is correct!!')
       setSignupError('')
       setLoginLoading(true)
-      router.push('/dashboard/payment/voucher')
+      setTimeout(() => {
+        setSignupSuccess('Awesome your Voucher Number is correct!!')
+        setSuccessModal(true)
+        router.push('/dashboard')
+      })
     } else {
       setSignupError('Incorrect Voucher Number!')
       setSignupSuccess('')
@@ -51,6 +56,7 @@ const VoucherPage = () => {
 
   return (
     <DashboardLayout>
+      <SuccessModal isOpen={successModal} isClose={() => setSuccessModal(false)} />
       <SupportModal isOpen={supportModal} isClose={() => setSupportModal(false)} />
       <div className="container">
         <PaymentForm>

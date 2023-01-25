@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faChartLine,
   faAddressCard,
-  faChartPie,
+  faList,
   faCogs,
   faDoorOpen
 } from '@fortawesome/free-solid-svg-icons';
@@ -69,8 +69,8 @@ const Sidebar = () => {
           {isAdmin() ? <NavItem path='/dashboard/admin' icon={faDoorOpen} label="Admin" /> :
            <>
             <NavItem path='/dashboard' icon={faChartLine} label="Dashboard" />
+            <NavItem path='/dashboard/transactions' icon={faList} label="Transactions" />
             <NavItem path='/dashboard/support' icon={faAddressCard} label="Support" />
-            <NavItem path='/dashboard/settings' icon={faCogs} label="Settings" />
            </> 
            }
         </NavItemContainer>

@@ -62,16 +62,16 @@ export default function MobileMenu() {
             className=" text-gray-900 text-sm font-semibold"
             style={{ transitionDelay: '250ms' }}
           >
-            <Link href="#blog" className="flex w-auto pl-4 pb-4">
-              Blog
+            <Link href="track" className="flex w-auto pl-4 pb-4">
+              Send Money
             </Link>
           </li>
           <li
             className="text-gray-900 text-sm font-semibold"
             style={{ transitionDelay: '275ms' }}
           >
-            <Link href="#about" className="flex w-auto pl-4 pb-4">
-              About
+            <Link href="/track" className="flex w-auto pl-4 pb-4">
+              Track and Receive
             </Link>
           </li>
           <li
@@ -87,7 +87,7 @@ export default function MobileMenu() {
             style={{ transitionDelay: '325ms' }}
           >
             <Link href="/register" className="flex justify-between text-white items-center w-auto pl-4 pb-4 core-btn shadow-2xl ml-4 bg-blue py-3 px-6 md:inline-block">
-              Register <CiLogin className="text-2xl" />
+              Create account <CiLogin className="text-2xl" />
             </Link>
           </li>
         </ul>

@@ -15,6 +15,7 @@ import Loading from '@/components/common/Loading'
 import { useRouter } from 'next/router'
 import { AuthContext } from '@/context/AuthContext'
 import NotPaidModal from '@/components/NotPaidModal'
+import OrderModal from '@/components/OrderModal'
 
 
 const SignupSchema = Yup.object().shape({
@@ -29,14 +30,14 @@ const SignupSchema = Yup.object().shape({
 
 const PaymentPage = () => {
   const router = useRouter()
-  const { authState } = useContext(AuthContext)
+  
   const [isOpen, setIsOpen] = useState(false)
   const [signupSuccess, setSignupSuccess] = useState<any>();
   const [signupError, setSignupError] = useState<any>();
   const [loginLoading, setLoginLoading] = useState<any>(false);
   const [formData, setFormData] = useState()
   const [isLoading, setIsLoading] = useState(true)
-  const [notPaidModal, setNotPaidModal] = useState(false)
+  const [openOrder, setOpenOrder] = useState(false)
 
 
   useEffect(() => {
@@ -57,14 +58,9 @@ const PaymentPage = () => {
 
   const handlePayment = () => {
     setIsLoading(true)
-    
     setTimeout(() => {
-      if(authState.isPaid === 'Not Paid') {
-        setNotPaidModal(true)
-        setIsOpen(false)
-      } else {
-        router.push('/dashboard/payment/tax')
-      }
+      setIsOpen(false)
+      setOpenOrder(true)
     }, 2000)
   }
 
@@ -72,7 +68,7 @@ const PaymentPage = () => {
     <>
     {/* {isLoading && <Loading />} */}
     <DashboardLayout>
-      <NotPaidModal isOpen={notPaidModal} isClose={() => setNotPaidModal(false)} />
+      <OrderModal isOpen={openOrder} isClose={() => setOpenOrder(false)} />
       <PreviewTransferDetails isLoading={isLoading} handleClick={handlePayment} data={formData} isOpen={isOpen} isClose={() => setIsOpen(false)} />
       <div className="container py-20">
         <PaymentForm>
