@@ -33,9 +33,6 @@ const CurrencyConverter = () => {
       setInfo(res.data[from]);
     })
   }, [from]);
-
-
-  console.log(info)
   
 
   // Calling the convert function whenever
@@ -49,7 +46,6 @@ const CurrencyConverter = () => {
   function convert() {
     var rate = info[to];
     setOutput(input * rate);
-    console.log(100 * rate)
   }
 
    // Function to switch between two currency

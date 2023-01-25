@@ -11,7 +11,7 @@ const FeatureSection = () => {
   return (
     <AnimationOnScroll animateIn="animate__backInUp" animateOnce={false}>
       <SectionWrapper>
-        <div className="container mx-auto py-20 flex">
+        <div className="container mx-auto py-20 flex flex-wrap">
             <Image src={FeatureImg} alt="FeatureImg" width={320} height={352} className="md:mt-20 xl:mt-4" />
           {/* <div className="img-wrapper">
           </div> */}
