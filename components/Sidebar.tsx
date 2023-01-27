@@ -7,7 +7,7 @@ import {
   faChartLine,
   faAddressCard,
   faList,
-  faCogs,
+  faChartPie,
   faDoorOpen
 } from '@fortawesome/free-solid-svg-icons';
 import Logo from './common/Logo';
@@ -70,6 +70,7 @@ const Sidebar = () => {
            <>
             <NavItem path='/dashboard' icon={faChartLine} label="Dashboard" />
             <NavItem path='/dashboard/transactions' icon={faList} label="Transactions" />
+            {/* <NavItem path='/dashboard/myorders' icon={faChartPie} label="My Orders" /> */}
             <NavItem path='/dashboard/support' icon={faAddressCard} label="Support" />
            </> 
            }

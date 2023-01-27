@@ -8,7 +8,7 @@ import {
   faChartLine,
   faList,
   faHeadset,
-  faCogs
+  faChartPie
 } from '@fortawesome/free-solid-svg-icons';
 
 const navItems = [
@@ -24,6 +24,12 @@ const navItems = [
     icon: faList,
     allowedRoles: ['admin']
   },
+  // {
+  //   label: 'Orders',
+  //   path: '/dashboard/orders',
+  //   icon: faChartPie,
+  //   allowedRoles: ['admin']
+  // },
   // {
   //   label: 'Account',
   //   path: 'account',

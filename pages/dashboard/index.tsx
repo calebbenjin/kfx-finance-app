@@ -69,10 +69,10 @@ const DashboardPage = () => {
         </div>
 
         <div className="grid grid-cols-2 gap-4 sm:gap-6 mt-10">
-          <div className="adsCard py-10 sm:py-20 px-4 mt-6 rounded-lg">
+          <div className="adsCard py-6 sm:py-10 sm:px-8 px-4 mt-6 rounded-lg">
             <h3 className="sm:text-2xl text-gray-100 font-semibold capitalize">Save time and money when you send money internationally with us.</h3>
           </div>
-          <div className="adsCard2 py-10 sm:py-20 px-4 mt-6 rounded-lg">
+          <div className="adsCard2 py-6 sm:py-10 px-4 sm:px-8 mt-6 rounded-lg">
             <h3 className="sm:text-2xl text-gray-100 font-semibold capitalize">Fast, flexible and secure international money transfers across the world.</h3>
           </div>
         </div>

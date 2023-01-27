@@ -11,10 +11,8 @@ const FeatureSection = () => {
   return (
     <AnimationOnScroll animateIn="animate__backInUp" animateOnce={false}>
       <SectionWrapper>
-        <div className="container mx-auto py-20 flex flex-wrap">
+        <div className="container mx-auto py-20 flex flex-wrap sm:flex-nowrap">
             <Image src={FeatureImg} alt="FeatureImg" width={320} height={352} className="md:mt-20 xl:mt-4" />
-          {/* <div className="img-wrapper">
-          </div> */}
           <div className="content-wrapper text-center xl:text-left lg:pl-10 xl:pl-10 xl:pt-10 pt-10">
             {/* <h2 className="md:text-1xl font-bold capitalize text-blue">Our Feature</h2> */}
             <h1 className="text-3xl my-5 sm:text-6xl md:my-4 xl:my-10 font-semibold tracking-normal">Money Transfers at your Fingertips</h1>

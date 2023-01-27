@@ -14,6 +14,7 @@ type AuthProps = {
 const AuthProvider = ({children}: AuthProps) => {
   const route = useRouter()
   const [authState, setAuthState] = useState<any>({})
+  const [authOrders, setAuthOrders] = useState<any>({})
 
   const userID = typeof window !== 'undefined' && localStorage.getItem('userID')
 
@@ -48,6 +49,7 @@ const AuthProvider = ({children}: AuthProps) => {
       authState, 
       setAuthState,
       logout,
+      setAuthOrders,
       isAdmin}}>
       {children}
     </Provider>

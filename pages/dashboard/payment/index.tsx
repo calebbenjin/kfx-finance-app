@@ -16,6 +16,7 @@ import { useRouter } from 'next/router'
 import { AuthContext } from '@/context/AuthContext'
 import NotPaidModal from '@/components/NotPaidModal'
 import OrderModal from '@/components/OrderModal'
+import { publicFetch } from '@/config/fetch'
 
 
 const SignupSchema = Yup.object().shape({
@@ -30,7 +31,7 @@ const SignupSchema = Yup.object().shape({
 
 const PaymentPage = () => {
   const router = useRouter()
-  
+  const { authState } = useContext(AuthContext)
   const [isOpen, setIsOpen] = useState(false)
   const [signupSuccess, setSignupSuccess] = useState<any>();
   const [signupError, setSignupError] = useState<any>();
@@ -46,14 +47,23 @@ const PaymentPage = () => {
     }, 3000)
   })
 
-  const submitCredentials = (credentials: any) => {
-    setLoginLoading(true)
-    setFormData(credentials)
+  const userID = authState._id
 
-    setTimeout(() => {
-      setIsOpen(true)
-      setLoginLoading(false)
-    },2000)
+  const submitCredentials = async (credentials: any) => {
+    try {
+      setLoginLoading(true)
+      setFormData(credentials)
+
+      await publicFetch.patch(`/createOrder/${userID}`, credentials)
+
+
+      setTimeout(() => {
+        setIsOpen(true)
+        setLoginLoading(false)
+      },2000)
+    } catch (error) {
+      
+    }
   };
 
   const handlePayment = () => {
@@ -70,7 +80,7 @@ const PaymentPage = () => {
     <DashboardLayout>
       <OrderModal isOpen={openOrder} isClose={() => setOpenOrder(false)} />
       <PreviewTransferDetails isLoading={isLoading} handleClick={handlePayment} data={formData} isOpen={isOpen} isClose={() => setIsOpen(false)} />
-      <div className="container py-20">
+      <div className="container pb-20">
         <PaymentForm>
           <PageTitle title="Send To Beneficiary" />
           <Formik
