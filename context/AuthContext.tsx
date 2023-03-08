@@ -37,7 +37,7 @@ const AuthProvider = ({children}: AuthProps) => {
 
   const logout = async () => {
     try {
-      const data = await axios.post(`${process.env.NEXT_APP_API_URL}/logout`)
+      const data = await axios.post(`${process.env.NEXT_PUBLIC_APP_URL}/logout`)
       route.push('/login')
     } catch (error) {
       console.log(error)
