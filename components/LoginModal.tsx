@@ -42,7 +42,7 @@ const LoginModal = ({isOpen, isClose}: ModalProps) => {
   const submitCredentials = async (credentials: any) => {
     try {
       setLoginLoading(true);
-      const {data} = await axios.post(`${process.env.NEXT_APP_API_URL}/authenticate`, credentials)
+      const {data} = await axios.post(`${process.env.NEXT_PUBLIC_APP_URL}/authenticate`, credentials)
       setLoginSuccess(data.message)
       setLoginError('')
 

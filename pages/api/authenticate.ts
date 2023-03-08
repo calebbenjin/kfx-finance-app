@@ -11,7 +11,7 @@ const authenticate = async (req: any, res: any) => {
         'Set-Cookie',
         cookie.serialize('token', String(data.token), {
           httpOnly: true,
-          secure: process.env.NODE_ENV !== 'development',
+          secure: process.env.NEXT_PUBLIC_NODE_ENV !== 'development',
           maxAge: 60 * 60 * 24 * 7, // 1 week
           sameSite: 'strict',
           path: '/',
