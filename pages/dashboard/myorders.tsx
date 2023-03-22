@@ -11,8 +11,6 @@ import { formatCurrency } from '@/config/index';
 
 const MyOrdersPage = () => {
   const { authState } = useContext(AuthContext)
-  
-  console.log(authState.orders)
 
 
   return (

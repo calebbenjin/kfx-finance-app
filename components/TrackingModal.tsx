@@ -25,8 +25,6 @@ const TrackingModal = ({ isOpen, isClose, data }: PreviewProps) => {
 
   const cancelButtonRef = useRef(null)
 
-  console.log(data)
-
   const handleLoginModal = () => {
     setOpenLoginModal(true)
   }
