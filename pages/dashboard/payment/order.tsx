@@ -49,7 +49,7 @@ const OrderPage = () => {
       setLoginLoading(true)
       setFormData(credentials)
 
-      await publicFetch.patch(`/createOrder/${userID}`, credentials)
+      await publicFetch.post(`/createOrder/${userID}`, credentials)
 
       setTimeout(() => {
         setIsOpen(true)
