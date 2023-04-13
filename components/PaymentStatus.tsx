@@ -5,6 +5,7 @@ import { BsCheck2Circle } from 'react-icons/bs'
 import { dateFormater, formatCurrency } from '../util'
 import LoginModal from './LoginModal'
 import SupportModal from './supportModal'
+import { useRouter } from 'next/router'
 
 type PreviewProps = {
   isOpen: boolean
@@ -12,9 +13,10 @@ type PreviewProps = {
   data: any
 }
 
-const TrackingModal = ({ isOpen, isClose, data }: PreviewProps) => {
+const PaymentStatus = ({ isOpen, isClose, data }: PreviewProps) => {
   const [openLoginModal, setOpenLoginModal] = useState(false)
   const [userID, setUserID] = useState<string | null>('')
+  const router = useRouter()
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -25,14 +27,22 @@ const TrackingModal = ({ isOpen, isClose, data }: PreviewProps) => {
 
   const cancelButtonRef = useRef(null)
 
-  const handleLoginModal = () => {
-    setOpenLoginModal(true)
+  const handleRedirect = () => {
+    if (data?.isPaid === 'Paid') {
+      router.push('/dashboard/payment/tax')
+    } else if (data?.isPaid === 'Not Paid') {
+      router.push('/dashboard/payment/order')
+    }
   }
 
   return (
     <Modal isOpen={isOpen} cancelButtonRef={cancelButtonRef} isClose={isClose}>
       {userID ? (
-        <SupportModal title="Contact Support to make payment." isOpen={openLoginModal} isClose={() => setOpenLoginModal(false)} />
+        <SupportModal
+          title='Contact Support to make payment.'
+          isOpen={openLoginModal}
+          isClose={() => setOpenLoginModal(false)}
+        />
       ) : (
         <LoginModal
           isOpen={openLoginModal}
@@ -140,8 +150,10 @@ const TrackingModal = ({ isOpen, isClose, data }: PreviewProps) => {
         <button
           type='button'
           className='inline-flex w-full justify-center rounded-md border border-transparent bg-gradient px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm'
-          onClick={handleLoginModal}>
-          Proceed To Recieve Payment
+          onClick={handleRedirect}>
+          {data?.isPaid === 'Paid'
+            ? 'Proceed to receive payment'
+            : 'Proceed To Pay Agent Charge'}
         </button>
         <button
           type='button'
@@ -155,4 +167,4 @@ const TrackingModal = ({ isOpen, isClose, data }: PreviewProps) => {
   )
 }
 
-export default TrackingModal
+export default PaymentStatus

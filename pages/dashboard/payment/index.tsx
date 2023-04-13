@@ -4,6 +4,7 @@ import PageTitle from '@/components/common/PageTitle'
 import styled from 'styled-components'
 import { Form, Formik } from 'formik'
 import * as Yup from 'yup';
+import axios from 'axios';
 import { Button } from '@/components/Button'
 import PreviewTransferDetails from '@/components/PreviewTransferDetails'
 import { parseCookies } from '@/config/parseCookies';
@@ -54,8 +55,9 @@ const PaymentPage = () => {
       setLoginLoading(true)
       setFormData(credentials)
 
-      await publicFetch.patch(`/createOrder/${userID}`, credentials)
+      const { data } = await publicFetch.post(`/createTransaction/${userID}`, credentials)
 
+      console.log(data);
 
       setTimeout(() => {
         setIsOpen(true)

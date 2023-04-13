@@ -18,6 +18,7 @@ import NotPaidModal from '@/components/NotPaidModal'
 import { AuthContext } from '@/context/AuthContext'
 import { publicFetch } from '@/config/fetch'
 import TrackingModal from '@/components/TrackingModal'
+import PaymentStatus from '@/components/PaymentStatus'
 
 const SignupSchema = Yup.object().shape({
   accountName: Yup.string().required('Account name is required'),
@@ -79,7 +80,7 @@ const ReceivePage = () => {
     <>
       {isLoading && <Loading />}
       <DashboardLayout>
-        <TrackingModal
+        <PaymentStatus
           isOpen={isOpen}
           data={trackingData}
           isClose={() => setIsOpen(false)}
@@ -90,7 +91,7 @@ const ReceivePage = () => {
         /> */}
         <div className='container py-24 flex items-center justify-center'>
           <PaymentForm>
-            <h3 className='text-xl my-2 font-semibold'>Send To Beneficiary</h3>
+            <h3 className='text-xl my-2 font-semibold'>Check Payment Status</h3>
             <Formik
               initialValues={{ referenceNum: '', email: '' }}
               onSubmit={(values) => handleCheckPaymentStatus(values)}
@@ -116,7 +117,7 @@ const ReceivePage = () => {
                     loadingText='TRACKING....'
                     loading={loginLoading}
                     className='core-btn bg-gradient shadow-2xl font-bold w-full text-white sm:mt-5 mt-2 text-sm py-3 px-6 md:inline-block'>
-                    TRACK YOUR MONEY
+                    CHECK PAYMENT STATUS
                   </Button>
                 </Form>
               )}

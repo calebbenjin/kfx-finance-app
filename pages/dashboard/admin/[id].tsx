@@ -59,8 +59,7 @@ const EditUserPage = ({userID}: userProps) => {
       // redirect
     } catch (error: any) {
       setLoginLoading(false);
-      const { data } = error.response;
-      setSignupError(data.message);
+      setSignupError(error.message);
       setSignupSuccess('');
     }
   };

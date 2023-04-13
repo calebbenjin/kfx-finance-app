@@ -43,7 +43,7 @@ const DashboardPage = () => {
     {isLoading && <Loading />}
     <DashboardLayout>
       {authState ? 
-      <div className="container dashboardHero bg-blue pt-10 pb-10">
+      <div className="container dashboardHero bg-blue sm:pt-10 pb-10">
         <p className="capitalize text-lg text-white">{`Welcome ${authState?.firstName}`}</p>
         <div className="text-center">
           <div className="w-full mb-4 sm:mb-0">

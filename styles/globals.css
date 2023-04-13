@@ -48,7 +48,6 @@ a {
   }
 }
 
-
 ::selection {
   background-color: #47a3f3;
   color: #fefefe;
@@ -74,7 +73,6 @@ table {
   white-space: nowrap;
 }
 
-
 .core-btn {
   border-radius: 6px;
   white-space: nowrap;
@@ -96,6 +94,13 @@ table {
   position: relative;
 }
 
+@media (max-width: 900px) {
+  .dashboardHero {
+    height: 17vh;
+    position: relative;
+  }
+}
+
 .loadingPage {
   background-image: url('/herobg.png');
   background-position: center;
@@ -103,12 +108,14 @@ table {
 }
 
 .adsCard {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url('/bgadmin.jpeg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)),
+    url('/bgadmin.jpeg');
   background-position: center;
   background-size: cover;
 }
 .adsCard2 {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url('/img6.jpeg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)),
+    url('/img6.jpeg');
   background-position: center;
   background-size: cover;
 }

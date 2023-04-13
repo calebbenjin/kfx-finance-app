@@ -24,12 +24,12 @@ const navItems = [
     icon: faList,
     allowedRoles: ['admin']
   },
-  // {
-  //   label: 'Orders',
-  //   path: '/dashboard/orders',
-  //   icon: faChartPie,
-  //   allowedRoles: ['admin']
-  // },
+  {
+    label: 'Orders',
+    path: '/dashboard/myorders',
+    icon: faChartPie,
+    allowedRoles: ['admin']
+  },
   // {
   //   label: 'Account',
   //   path: 'account',

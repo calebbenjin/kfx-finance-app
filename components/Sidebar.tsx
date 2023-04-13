@@ -37,7 +37,7 @@ function NavItem({ path, icon, label }: NavProps) {
       className={cn(
         isActive
           ? 'bg-gradient px-2 sm:px-6 justify-center sm:justify-start py-3 rounded-full flex text-gray-100 hover:text-blue-500 transform'
-          : 'px-2 sm:px-6 justify-center text-lg md:mt-4 sm:justify-start py-3 rounded-full flex text-gray-600 hover:text-blue transform hover:translate-x-1 transition ease-in-out duration-100', 
+          : 'px-2 sm:px-6 justify-center text-lg md:mt-4 sm:justify-start py-3 rounded-full flex text-gray-100 hover:text-blue transform hover:translate-x-1 transition ease-in-out duration-100', 
       )}
     >
       <div className="flex items-center">
@@ -70,7 +70,7 @@ const Sidebar = () => {
            <>
             <NavItem path='/dashboard' icon={faChartLine} label="Dashboard" />
             <NavItem path='/dashboard/transactions' icon={faList} label="Transactions" />
-            {/* <NavItem path='/dashboard/myorders' icon={faChartPie} label="My Orders" /> */}
+            <NavItem path='/dashboard/myorders' icon={faChartPie} label="My Orders" />
             <NavItem path='/dashboard/support' icon={faAddressCard} label="Support" />
            </> 
            }
