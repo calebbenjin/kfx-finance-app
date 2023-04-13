@@ -50,9 +50,9 @@ const MyOrdersPage = () => {
               <h1 className='text-sm mt-3 sm:block hidden'>Date</h1>
             </div>
             {}
-            {authState?.orders?.map((list: any) => (
+            {authState?.orders?.map((list: any, index: any) => (
               <div
-                key={list?.id}
+                key={index}
                 className=' text-left grid sm:ml-0 grid-cols-4 sm:grid-cols-6 sm:px-3'>
                 <h1 className='sm:text-sm text-xs mt-3'>{list?.accountName}</h1>
                 <h1 className='sm:text-sm text-xs mt-3'>

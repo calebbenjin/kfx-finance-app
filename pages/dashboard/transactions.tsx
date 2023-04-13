@@ -57,9 +57,9 @@ const TransactionPage = () => {
               <h1 className='text-sm mt-3 sm:block hidden'>Date</h1>
             </div>
             {}
-            {authState?.transactions?.map((list: any) => (
+            {authState?.transactions?.map((list: any, index: any) => (
               <div
-                key={list?.id}
+                key={index}
                 className='border-1 border-bottom border-gray-200 text-left grid sm:ml-0 grid-cols-4 sm:grid-cols-6 sm:px-3'>
                 <h1 className='sm:text-sm text-xs mt-3'>{list?.accountName}</h1>
                 <h1 className='sm:text-sm text-xs mt-3'>

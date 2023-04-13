@@ -55,12 +55,16 @@ const PaymentPage = () => {
       setLoginLoading(true)
       setFormData(credentials)
 
-    await publicFetch.post(`/createTransaction/${userID}`, credentials)
+    const { data } = await publicFetch.post(`/createTransaction/${userID}`, credentials)
 
-      setTimeout(() => {
-        setIsOpen(true)
-        setLoginLoading(false)
-      },2000)
+      if(data.status === "Successful") {
+        setTimeout(() => {
+          router.push("/dashboard")
+          setIsOpen(true)
+          setLoginLoading(false)
+        },2000)
+      }
+      
     } catch (error) {
       
     }
@@ -70,7 +74,7 @@ const PaymentPage = () => {
     setIsLoading(true)
     setTimeout(() => {
       setIsOpen(false)
-      setOpenOrder(true)
+      // setOpenOrder(true)
     }, 2000)
   }
 
@@ -78,7 +82,7 @@ const PaymentPage = () => {
     <>
     {/* {isLoading && <Loading />} */}
     <DashboardLayout>
-      <OrderModal isOpen={openOrder} isClose={() => setOpenOrder(false)} />
+      {/* <OrderModal isOpen={openOrder} isClose={() => setOpenOrder(false)} /> */}
       <PreviewTransferDetails isLoading={isLoading} handleClick={handlePayment} data={formData} isOpen={isOpen} isClose={() => setIsOpen(false)} />
       <div className="container pb-20">
         <PaymentForm>
