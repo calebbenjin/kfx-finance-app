@@ -55,9 +55,7 @@ const PaymentPage = () => {
       setLoginLoading(true)
       setFormData(credentials)
 
-      const { data } = await publicFetch.post(`/createTransaction/${userID}`, credentials)
-
-      console.log(data);
+    await publicFetch.post(`/createTransaction/${userID}`, credentials)
 
       setTimeout(() => {
         setIsOpen(true)

@@ -22,7 +22,6 @@ const AuthProvider = ({children}: AuthProps) => {
     const getAuthData = async () => {
       try {
         const { data } = await publicFetch.get(`${userID}`);
-        console.log(data);
         setAuthState(data?.data?.user);
       } catch (err) {
         console.log(err);
@@ -38,7 +37,7 @@ const AuthProvider = ({children}: AuthProps) => {
 
   const logout = async () => {
     try {
-      const data = await axios.post(`${process.env.NEXT_PUBLIC_APP_URL}/logout`)
+      await axios.post(`${process.env.NEXT_PUBLIC_APP_URL}/logout`)
       route.push('/login')
     } catch (error) {
       console.log(error)
