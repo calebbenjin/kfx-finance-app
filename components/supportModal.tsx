@@ -3,6 +3,7 @@ import { Dialog } from '@headlessui/react'
 import Modal from './Modal'
 import { LinkButton } from './Button'
 import { FaWhatsapp } from 'react-icons/fa'
+import { BsCheck2Circle } from 'react-icons/bs'
 
 type PreviewProps = {
   isOpen: boolean
@@ -25,20 +26,21 @@ const SupportModal = ({ isOpen, isClose, title }: PreviewProps) => {
             </Dialog.Title>
             <div className='mt-2 p-6 text-center'>
               <p className='text-sm text-gray-500'>
-                {title || 
+                {title ||
                   `Are you having issues with transfer, then feel free to live chat your life chat Account officer.`}
               </p>
               <div className='mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-light-blue sm:mx-auto my-4 sm:h-20 sm:w-20'>
-                <FaWhatsapp
-                  className='h-10 w-10 text-blue'
+                <BsCheck2Circle
+                  className='sm:h-16 sm:w-16 h-14 w-14 text-green-800'
                   aria-hidden='true'
                 />
               </div>
-              <LinkButton
-                href='https://wa.link/oinamx'
-                className='inline-flex w-full justify-center items-center rounded-md border border-transparent bg-gradient px-10 sm:px-20 my-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm'>
-                <FaWhatsapp className='mr-4 h-6 w-6' /> <span>Live Chat</span>
-              </LinkButton>
+              <div className='inline-flex w-full justify-center items-center rounded-md border border-transparent bg-gradient px-10 sm:px-20 my-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm'>
+                {' '}
+                <span>
+                  Use The live chat at the bottom right to talk with an agent.
+                </span>
+              </div>
             </div>
           </div>
         </div>
