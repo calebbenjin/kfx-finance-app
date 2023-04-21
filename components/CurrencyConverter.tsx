@@ -28,8 +28,6 @@ const CurrencyConverter = () => {
   const [loginLoading, setLoginLoading] = useState(false)
   const [trackingData, setTrackingData] = useState({})
 
-  console.log(authState)
-
   useEffect(() => {
     axios
       .get(
