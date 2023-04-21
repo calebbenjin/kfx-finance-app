@@ -46,7 +46,7 @@ const MyOrdersPage = () => {
               <h1 className='text-sm mt-3'>Amount</h1>
               <h1 className='text-sm mt-3'>Bank</h1>
               <h1 className='text-sm mt-3'>Account</h1>
-              <h1 className='text-sm mt-3 sm:block hidden'>Country</h1>
+              {/* <h1 className='text-sm mt-3 sm:block hidden'>Country</h1> */}
               <h1 className='text-sm mt-3 sm:block hidden'>Date</h1>
             </div>
             {}
@@ -61,7 +61,7 @@ const MyOrdersPage = () => {
                 </h1>
                 <h1 className='sm:text-sm text-xs mt-3'>{list?.bankName}</h1>
                 <h1 className='sm:text-sm text-xs mt-3'>{list?.accountNumber}</h1>
-                <h1 className='sm:text-sm text-xs mt-3 sm:block hidden'>{list?.country}</h1>
+                {/* <h1 className='sm:text-sm text-xs mt-3 sm:block hidden'>{list?.country}</h1> */}
                 <h1 className='sm:text-sm text-xs mt-3 sm:block hidden'>
                   {list?.updatedAt ? dateFormater(list?.updatedAt) : null}
                 </h1>

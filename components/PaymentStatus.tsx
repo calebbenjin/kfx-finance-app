@@ -130,7 +130,7 @@ const PaymentStatus = ({ isOpen, isClose, data }: PreviewProps) => {
                 )}
                 <div className='list flex items-center mb-2 justify-between border-b pb-2'>
                   <p className='font-bold text-gray-500 text-sm sm:text-lg'>
-                    Local Agent Charge:
+                    Local Order:
                   </p>
                   <p
                     className={`font-semibold ${

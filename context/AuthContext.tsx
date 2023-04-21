@@ -22,6 +22,7 @@ const AuthProvider = ({children}: AuthProps) => {
     const getAuthData = async () => {
       try {
         const { data } = await publicFetch.get(`${userID}`);
+        
         setAuthState(data?.data?.user);
       } catch (err) {
         console.log(err);

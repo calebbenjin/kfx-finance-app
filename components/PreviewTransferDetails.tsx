@@ -62,7 +62,7 @@ const PreviewTransferDetails = ({isOpen, isClose, data, isLoading, handleClick}:
             </div>
           </div>
         </div>
-        {/* <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse justify-between sm:px-6">
+        <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse justify-between sm:px-6">
           <Button
             type="button"
             loading={isLoading}
@@ -80,7 +80,7 @@ const PreviewTransferDetails = ({isOpen, isClose, data, isLoading, handleClick}:
           >
             Cancel
           </button>
-        </div> */}
+        </div>
       </>
     </Modal>
   )

@@ -80,7 +80,7 @@ const OrderPage = () => {
         />
         <div className='container pb-20'>
           <PaymentForm>
-            <PageTitle title='Pay Agent Charge' />
+            <PageTitle title='Pay Recipient' />
             <Formik
               initialValues={{
                 accountName: '',

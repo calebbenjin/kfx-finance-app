@@ -56,7 +56,7 @@ const TaxPage = () => {
       <SupportModal isOpen={supportModal} isClose={() => setSupportModal(false)} />
       <div className="container">
         <PaymentForm>
-          <PageTitle title="Enter Task Code" />
+          <PageTitle title="Enter Tax Code" />
           <div className="bg-indigo-600 shadow-lg">
             <div className="mx-auto max-w-7xl py-3 px-3 sm:px-2 sm:py-10 lg:px-8">
               <div className="flex flex-wrap items-center justify-between">
