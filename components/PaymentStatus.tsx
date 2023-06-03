@@ -33,7 +33,7 @@ const PaymentStatus = ({ isOpen, isClose, data }: PreviewProps) => {
       data?.isPaid === 'PAID' ||
       data?.isPaid === 'paid'
     ) {
-      router.push('/dashboard/payment/tax')
+      router.push('/dashboard/payment/receivepayment')
     } else if (
       data?.isPaid === 'Not Paid' ||
       data?.isPaid === 'NOT PAID' ||
