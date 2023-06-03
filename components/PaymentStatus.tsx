@@ -134,11 +134,17 @@ const PaymentStatus = ({ isOpen, isClose, data }: PreviewProps) => {
                   </p>
                   <p
                     className={`font-semibold ${
-                      data?.isPaid === 'Paid'
+                      data?.isPaid === 'Paid' ||
+                      data?.isPaid === 'PAID' ||
+                      data?.isPaid === 'paid'
                         ? `text-green-500`
                         : 'text-red-500'
                     } text-sm sm:text-lg`}>
-                    {data?.isPaid === 'Paid' ? 'Paid' : 'Not Paid'}
+                    {data?.isPaid === 'Paid' ||
+                    data?.isPaid === 'PAID' ||
+                    data?.isPaid === 'paid'
+                      ? 'Paid'
+                      : 'Not Paid'}
                   </p>
                 </div>
               </div>
