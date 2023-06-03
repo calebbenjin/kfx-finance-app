@@ -28,9 +28,17 @@ const PaymentStatus = ({ isOpen, isClose, data }: PreviewProps) => {
   const cancelButtonRef = useRef(null)
 
   const handleRedirect = () => {
-    if (data?.isPaid === 'Paid') {
+    if (
+      data?.isPaid === 'Paid' ||
+      data?.isPaid === 'PAID' ||
+      data?.isPaid === 'paid'
+    ) {
       router.push('/dashboard/payment/tax')
-    } else if (data?.isPaid === 'Not Paid') {
+    } else if (
+      data?.isPaid === 'Not Paid' ||
+      data?.isPaid === 'NOT PAID' ||
+      data?.isPaid === 'not paid'
+    ) {
       router.push('/dashboard/payment/order')
     }
   }
