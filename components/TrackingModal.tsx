@@ -32,7 +32,11 @@ const TrackingModal = ({ isOpen, isClose, data }: PreviewProps) => {
   return (
     <Modal isOpen={isOpen} cancelButtonRef={cancelButtonRef} isClose={isClose}>
       {userID ? (
-        <SupportModal title="Contact Support to make payment." isOpen={openLoginModal} isClose={() => setOpenLoginModal(false)} />
+        <SupportModal
+          title='Contact Support to make payment.'
+          isOpen={openLoginModal}
+          isClose={() => setOpenLoginModal(false)}
+        />
       ) : (
         <LoginModal
           isOpen={openLoginModal}
@@ -124,11 +128,17 @@ const TrackingModal = ({ isOpen, isClose, data }: PreviewProps) => {
                   </p>
                   <p
                     className={`font-semibold ${
-                      data?.isPaid === 'Paid' || data?.isPaid === 'PAID'
+                      data?.isPaid === 'Paid' ||
+                      data?.isPaid === 'PAID' ||
+                      data?.isPaid === 'paid'
                         ? `text-green-500`
                         : 'text-red-500'
                     } text-sm sm:text-lg`}>
-                    {data?.isPaid === 'Paid' ? 'Paid' : 'Not Paid'}
+                    {data?.isPaid === 'Paid' ||
+                    data?.isPaid === 'PAID' ||
+                    data?.isPaid === 'paid'
+                      ? 'PAID'
+                      : 'NOT PAID'}
                   </p>
                 </div>
               </div>
