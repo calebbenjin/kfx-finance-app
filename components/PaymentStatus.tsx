@@ -157,7 +157,9 @@ const PaymentStatus = ({ isOpen, isClose, data }: PreviewProps) => {
           type='button'
           className='inline-flex w-full justify-center rounded-md border border-transparent bg-gradient px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm'
           onClick={handleRedirect}>
-          {data?.isPaid === 'Paid'
+          {data?.isPaid === 'Paid' ||
+          data?.isPaid === 'PAID' ||
+          data?.isPaid === 'paid'
             ? 'Proceed to receive payment'
             : 'Proceed To Pay Agent Charge'}
         </button>
