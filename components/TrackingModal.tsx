@@ -124,7 +124,7 @@ const TrackingModal = ({ isOpen, isClose, data }: PreviewProps) => {
                   </p>
                   <p
                     className={`font-semibold ${
-                      data?.isPaid === 'Paid'
+                      data?.isPaid === 'Paid' || data?.isPaid === 'PAID'
                         ? `text-green-500`
                         : 'text-red-500'
                     } text-sm sm:text-lg`}>
